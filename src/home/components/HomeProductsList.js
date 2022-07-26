@@ -1,8 +1,9 @@
 import styled from "styled-components";
+import BestProductsListBox from "../../common/components/BestProductsListBox";
 import ProductsListBox from "../../common/components/ProductsListBox";
 
 const Title = styled.h2`
-  margin: 110px 380px 0px 380px;
+  margin: 120px 380px 0px 380px;
   font-size: 32px;
   font-weight: 700;
 `;
@@ -15,8 +16,10 @@ function HomeProductsList() {
     <div>
       <Title>오늘은 이 상품 어때요?</Title>
       <ProductsListBox />
-      <Title>TODAY 카테고리 베스트</Title>
-      <ProductsListBox />
+
+      <Title>TODAY 베스트</Title>
+      <BestProductsListBox />
+
       <Title>신상 모아보기</Title>
       <ProductsListBox />
     </div>
