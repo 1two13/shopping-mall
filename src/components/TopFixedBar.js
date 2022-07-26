@@ -9,11 +9,12 @@ import { faUser } from "@fortawesome/free-regular-svg-icons";
 
 const TopBar = styled.div`
   display: flex;
-  margin: 30px 240px 0px 240px;
+  position: sticky;
+  margin: 40px 380px 0px 380px;
 `;
 
 const MainIconBox = styled.a`
-  width: 50%;
+  width: 60%;
 `;
 
 const MainIconNm = styled.span`
@@ -23,37 +24,39 @@ const MainIconNm = styled.span`
 `;
 
 const SearchBox = styled.div`
-  top: 20px;
   position: relative;
-  width: 30%;
+  width: 25%;
+  top: 20px;
+  color: #212121;
 `;
 
 const SearchBoxInput = styled.input`
+  width: 100%;
   border: none;
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid;
+  border-bottom-color: #212121;
   padding: 0px;
 `;
 
 const SearchIcon = styled.div`
   position: absolute;
-  font-size: 25px;
   top: -18px;
-  right: 28px;
+  right: 5px;
+  font-size: 25px;
 `;
 
 const IconsBox = styled.div`
   display: flex;
-  width: 10%;
-  margin-left: 52px;
+  width: 15%;
+  justify-content: space-between;
+  margin-left: 60px;
+  min-width: 165px;
+  padding: 0px 5px 0px 5px;
 `;
 
-const CartIcon = styled.div`
-  margin-right: 25px;
-`;
+const CartIcon = styled.div``;
 
-const HeartIcon = styled.div`
-  margin-right: 25px;
-`;
+const HeartIcon = styled.div``;
 
 const MyPageIcon = styled.div``;
 
@@ -72,13 +75,13 @@ function TopFixedBar() {
       </SearchBox>
       <IconsBox>
         <CartIcon>
-          <FontAwesomeIcon icon={faCartShopping} size="2x" />
+          <FontAwesomeIcon icon={faCartShopping} size="2x" color="#212121" />
         </CartIcon>
         <HeartIcon>
-          <FontAwesomeIcon icon={faHeart} size="2x" />
+          <FontAwesomeIcon icon={faHeart} size="2x" color="#212121" />
         </HeartIcon>
         <MyPageIcon>
-          <FontAwesomeIcon icon={faUser} size="2x" />
+          <FontAwesomeIcon icon={faUser} size="2x" color="#212121" />
         </MyPageIcon>
       </IconsBox>
     </TopBar>

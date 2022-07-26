@@ -3,7 +3,7 @@ import styled from "styled-components";
 const MenuBarBox = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 40px 240px 15px 240px;
+  margin: 40px 380px 15px 380px;
   a {
     font-weight: 700;
   }
