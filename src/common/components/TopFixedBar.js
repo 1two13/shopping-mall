@@ -27,14 +27,12 @@ const SearchBox = styled.div`
   position: relative;
   width: 25%;
   top: 20px;
-  color: #212121;
 `;
 
 const SearchBoxInput = styled.input`
   width: 100%;
   border: none;
-  border-bottom: 2px solid;
-  border-bottom-color: #212121;
+  border-bottom: 2px solid black;
   padding: 0px;
 `;
 
@@ -75,13 +73,13 @@ function TopFixedBar() {
       </SearchBox>
       <IconsBox>
         <CartIcon>
-          <FontAwesomeIcon icon={faCartShopping} size="2x" color="#212121" />
+          <FontAwesomeIcon icon={faCartShopping} size="2x" />
         </CartIcon>
         <HeartIcon>
-          <FontAwesomeIcon icon={faHeart} size="2x" color="#212121" />
+          <FontAwesomeIcon icon={faHeart} size="2x" />
         </HeartIcon>
         <MyPageIcon>
-          <FontAwesomeIcon icon={faUser} size="2x" color="#212121" />
+          <FontAwesomeIcon icon={faUser} size="2x" />
         </MyPageIcon>
       </IconsBox>
     </TopBar>
