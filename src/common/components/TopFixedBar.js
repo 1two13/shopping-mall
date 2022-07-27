@@ -33,7 +33,7 @@ const SearchBox = styled.div`
   position: relative;
   width: 25%;
   top: 20px;
-  left: 25px;
+  left: 60px;
 `;
 
 const SearchIcon = styled.div`
@@ -41,6 +41,9 @@ const SearchIcon = styled.div`
   top: -18px;
   right: 5px;
   font-size: 25px;
+  @media screen and (max-width: 1500px) {
+    color: white;
+  }
 `;
 
 const SearchBoxInput = styled.input`
@@ -48,15 +51,22 @@ const SearchBoxInput = styled.input`
   border: none;
   border-bottom: 2px solid black;
   padding: 0px;
+  @media screen and (max-width: 1500px) {
+    border-bottom: 2px solid white;
+  }
 `;
 
 const IconsBox = styled.div`
   display: flex;
   width: 15%;
   justify-content: space-between;
-  margin-left: 60px;
   min-width: 165px;
-  padding: 8px 5px 0px 5px;
+  padding: 8px 0px 0px 0px;
+  margin-left: 110px;
+  border: 1px solid blue;
+  @media screen and (max-width: 1500px) {
+    display: none;
+  }
 `;
 
 const CartIcon = styled.div``;
