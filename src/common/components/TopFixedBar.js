@@ -9,8 +9,13 @@ import { faUser } from "@fortawesome/free-regular-svg-icons";
 
 const TopBar = styled.div`
   display: flex;
+  margin: 0px 380px;
   position: sticky;
-  margin: 40px 380px 0px 380px;
+  top: 0;
+  height: 100px;
+  z-index: 999;
+  align-items: center;
+  background-color: white;
 `;
 
 const MainIconBox = styled.a`
