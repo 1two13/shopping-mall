@@ -7,6 +7,9 @@ import "slick-carousel/slick/slick-theme.css";
 const AnimateBox = styled.div`
   margin: 0px 380px;
   max-height: 570px;
+  @media screen and (max-width: 1178px) {
+    min-width: 418px;
+  }
 `;
 
 function BigAnimatePic() {
