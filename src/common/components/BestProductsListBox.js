@@ -5,11 +5,11 @@ const ProductsBox = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 42px 380px 80px 380px;
-  position: relative;
 `;
 
 const ProductBox = styled.div`
   margin-bottom: 30px;
+  position: relative;
 `;
 
 const Img = styled.img`
