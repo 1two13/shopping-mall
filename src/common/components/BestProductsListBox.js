@@ -1,20 +1,18 @@
 import styled from "styled-components";
 
 const ProductsBox = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   margin: 42px 380px 80px 380px;
 `;
 
 const ProductBox = styled.div`
   margin-bottom: 30px;
-  position: relative;
 `;
 
 const Img = styled.img`
-  width: 278px;
-  height: 305px;
+  width: 95%;
+  aspect-ratio: 3 / 3.1;
 `;
 
 const Name = styled.div`
@@ -47,14 +45,13 @@ const Idx = styled.div`
 `;
 
 function BestProductsListBox() {
-  let name =
-    "~2XL[기장선택!!/3Color]뒷밴딩 안단추 클립 찰랑 핀턱 와이드 슬랙스팬츠_복플레이스";
+  let name = "full bloom 디자인 [아크릴톡] full bloom 디자인 [아크릴톡]";
 
   return (
     <ProductsBox>
       <ProductBox>
         <Idx>1</Idx>
-        <Img src="https://mblogthumb-phinf.pstatic.net/MjAxOTA4MjZfMTYx/MDAxNTY2Nzk0MTY3Mzc4.81TTXc-t017CH979nJRGPOOAlxrf6RYbqpvictp3f9Ug.iIKSUj1gMxwMGPgtsmPruX-9FrBHO9bY5cdvVHbprBMg.JPEG.kyk123147/KakaoTalk_20190826_100126816_14.jpg?type=w800" />
+        <Img src="https://image.brandi.me/cproduct/2022/03/07/SB000000000054841182_1646620295_image1_M.jpeg" />
         <Name>{name.length < 30 ? name : name.slice(0, 27) + " ..."}</Name>
         <DetailsBox>
           <Sale>10%</Sale>
@@ -63,7 +60,7 @@ function BestProductsListBox() {
       </ProductBox>
       <ProductBox>
         <Idx>2</Idx>
-        <Img src="https://mblogthumb-phinf.pstatic.net/MjAxOTA4MjZfMTYx/MDAxNTY2Nzk0MTY3Mzc4.81TTXc-t017CH979nJRGPOOAlxrf6RYbqpvictp3f9Ug.iIKSUj1gMxwMGPgtsmPruX-9FrBHO9bY5cdvVHbprBMg.JPEG.kyk123147/KakaoTalk_20190826_100126816_14.jpg?type=w800" />
+        <Img src="https://image.brandi.me/cproduct/2022/03/07/SB000000000054841182_1646620295_image1_M.jpeg" />
         <Name>{name.length < 30 ? name : name.slice(0, 27) + " ..."}</Name>
         <DetailsBox>
           <Sale>10%</Sale>
@@ -72,7 +69,7 @@ function BestProductsListBox() {
       </ProductBox>
       <ProductBox>
         <Idx>3</Idx>
-        <Img src="https://mblogthumb-phinf.pstatic.net/MjAxOTA4MjZfMTYx/MDAxNTY2Nzk0MTY3Mzc4.81TTXc-t017CH979nJRGPOOAlxrf6RYbqpvictp3f9Ug.iIKSUj1gMxwMGPgtsmPruX-9FrBHO9bY5cdvVHbprBMg.JPEG.kyk123147/KakaoTalk_20190826_100126816_14.jpg?type=w800" />
+        <Img src="https://image.brandi.me/cproduct/2022/03/07/SB000000000054841182_1646620295_image1_M.jpeg" />
         <Name>{name.length < 30 ? name : name.slice(0, 27) + " ..."}</Name>
         <DetailsBox>
           <Sale>10%</Sale>
@@ -81,7 +78,7 @@ function BestProductsListBox() {
       </ProductBox>
       <ProductBox>
         <Idx>4</Idx>
-        <Img src="https://mblogthumb-phinf.pstatic.net/MjAxOTA4MjZfMTYx/MDAxNTY2Nzk0MTY3Mzc4.81TTXc-t017CH979nJRGPOOAlxrf6RYbqpvictp3f9Ug.iIKSUj1gMxwMGPgtsmPruX-9FrBHO9bY5cdvVHbprBMg.JPEG.kyk123147/KakaoTalk_20190826_100126816_14.jpg?type=w800" />
+        <Img src="https://image.brandi.me/cproduct/2022/03/07/SB000000000054841182_1646620295_image1_M.jpeg" />
         <Name>{name.length < 30 ? name : name.slice(0, 27) + " ..."}</Name>
         <DetailsBox>
           <Sale>10%</Sale>
@@ -90,7 +87,7 @@ function BestProductsListBox() {
       </ProductBox>
       <ProductBox>
         <Idx>5</Idx>
-        <Img src="https://mblogthumb-phinf.pstatic.net/MjAxOTA4MjZfMTYx/MDAxNTY2Nzk0MTY3Mzc4.81TTXc-t017CH979nJRGPOOAlxrf6RYbqpvictp3f9Ug.iIKSUj1gMxwMGPgtsmPruX-9FrBHO9bY5cdvVHbprBMg.JPEG.kyk123147/KakaoTalk_20190826_100126816_14.jpg?type=w800" />
+        <Img src="https://image.brandi.me/cproduct/2022/03/07/SB000000000054841182_1646620295_image1_M.jpeg" />
         <Name>{name.length < 30 ? name : name.slice(0, 27) + " ..."}</Name>
         <DetailsBox>
           <Sale>10%</Sale>
@@ -99,7 +96,7 @@ function BestProductsListBox() {
       </ProductBox>
       <ProductBox>
         <Idx>6</Idx>
-        <Img src="https://mblogthumb-phinf.pstatic.net/MjAxOTA4MjZfMTYx/MDAxNTY2Nzk0MTY3Mzc4.81TTXc-t017CH979nJRGPOOAlxrf6RYbqpvictp3f9Ug.iIKSUj1gMxwMGPgtsmPruX-9FrBHO9bY5cdvVHbprBMg.JPEG.kyk123147/KakaoTalk_20190826_100126816_14.jpg?type=w800" />
+        <Img src="https://image.brandi.me/cproduct/2022/03/07/SB000000000054841182_1646620295_image1_M.jpeg" />
         <Name>{name.length < 30 ? name : name.slice(0, 27) + " ..."}</Name>
         <DetailsBox>
           <Sale>10%</Sale>
@@ -108,7 +105,7 @@ function BestProductsListBox() {
       </ProductBox>
       <ProductBox>
         <Idx>7</Idx>
-        <Img src="https://mblogthumb-phinf.pstatic.net/MjAxOTA4MjZfMTYx/MDAxNTY2Nzk0MTY3Mzc4.81TTXc-t017CH979nJRGPOOAlxrf6RYbqpvictp3f9Ug.iIKSUj1gMxwMGPgtsmPruX-9FrBHO9bY5cdvVHbprBMg.JPEG.kyk123147/KakaoTalk_20190826_100126816_14.jpg?type=w800" />
+        <Img src="https://image.brandi.me/cproduct/2022/03/07/SB000000000054841182_1646620295_image1_M.jpeg" />
         <Name>{name.length < 30 ? name : name.slice(0, 27) + " ..."}</Name>
         <DetailsBox>
           <Sale>10%</Sale>
@@ -117,7 +114,7 @@ function BestProductsListBox() {
       </ProductBox>
       <ProductBox>
         <Idx>8</Idx>
-        <Img src="https://mblogthumb-phinf.pstatic.net/MjAxOTA4MjZfMTYx/MDAxNTY2Nzk0MTY3Mzc4.81TTXc-t017CH979nJRGPOOAlxrf6RYbqpvictp3f9Ug.iIKSUj1gMxwMGPgtsmPruX-9FrBHO9bY5cdvVHbprBMg.JPEG.kyk123147/KakaoTalk_20190826_100126816_14.jpg?type=w800" />
+        <Img src="https://image.brandi.me/cproduct/2022/03/07/SB000000000054841182_1646620295_image1_M.jpeg" />
         <Name>{name.length < 30 ? name : name.slice(0, 27) + " ..."}</Name>
         <DetailsBox>
           <Sale>10%</Sale>

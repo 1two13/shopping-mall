@@ -6,6 +6,7 @@ const MenuBarBox = styled.div`
   margin: 20px 380px 15px 380px;
   a {
     font-weight: 700;
+    font-size: 17px;
   }
 `;
 
