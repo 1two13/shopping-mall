@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import ProductBox from "./ProductBox";
 
 const ProductsBox = styled.div`
   display: grid;
@@ -6,7 +7,7 @@ const ProductsBox = styled.div`
   margin: 42px 380px 80px 380px;
 `;
 
-const ProductBox = styled.div`
+const Box = styled.div`
   margin-bottom: 30px;
 `;
 
@@ -45,82 +46,40 @@ const Idx = styled.div`
 `;
 
 function BestProductsListBox() {
-  let name = "full bloom 디자인 [아크릴톡] full bloom 디자인 [아크릴톡]";
-
   return (
     <ProductsBox>
-      <ProductBox>
+      <Box>
         <Idx>1</Idx>
-        <Img src="https://image.brandi.me/cproduct/2022/03/07/SB000000000054841182_1646620295_image1_M.jpeg" />
-        <Name>{name.length < 30 ? name : name.slice(0, 27) + " ..."}</Name>
-        <DetailsBox>
-          <Sale>10%</Sale>
-          <Price>27,540원</Price>
-        </DetailsBox>
-      </ProductBox>
-      <ProductBox>
+        <ProductBox />
+      </Box>
+      <Box>
         <Idx>2</Idx>
-        <Img src="https://image.brandi.me/cproduct/2022/03/07/SB000000000054841182_1646620295_image1_M.jpeg" />
-        <Name>{name.length < 30 ? name : name.slice(0, 27) + " ..."}</Name>
-        <DetailsBox>
-          <Sale>10%</Sale>
-          <Price>27,540원</Price>
-        </DetailsBox>
-      </ProductBox>
-      <ProductBox>
+        <ProductBox />
+      </Box>
+      <Box>
         <Idx>3</Idx>
-        <Img src="https://image.brandi.me/cproduct/2022/03/07/SB000000000054841182_1646620295_image1_M.jpeg" />
-        <Name>{name.length < 30 ? name : name.slice(0, 27) + " ..."}</Name>
-        <DetailsBox>
-          <Sale>10%</Sale>
-          <Price>27,540원</Price>
-        </DetailsBox>
-      </ProductBox>
-      <ProductBox>
+        <ProductBox />
+      </Box>
+      <Box>
         <Idx>4</Idx>
-        <Img src="https://image.brandi.me/cproduct/2022/03/07/SB000000000054841182_1646620295_image1_M.jpeg" />
-        <Name>{name.length < 30 ? name : name.slice(0, 27) + " ..."}</Name>
-        <DetailsBox>
-          <Sale>10%</Sale>
-          <Price>27,540원</Price>
-        </DetailsBox>
-      </ProductBox>
-      <ProductBox>
+        <ProductBox />
+      </Box>
+      <Box>
         <Idx>5</Idx>
-        <Img src="https://image.brandi.me/cproduct/2022/03/07/SB000000000054841182_1646620295_image1_M.jpeg" />
-        <Name>{name.length < 30 ? name : name.slice(0, 27) + " ..."}</Name>
-        <DetailsBox>
-          <Sale>10%</Sale>
-          <Price>27,540원</Price>
-        </DetailsBox>
-      </ProductBox>
-      <ProductBox>
+        <ProductBox />
+      </Box>
+      <Box>
         <Idx>6</Idx>
-        <Img src="https://image.brandi.me/cproduct/2022/03/07/SB000000000054841182_1646620295_image1_M.jpeg" />
-        <Name>{name.length < 30 ? name : name.slice(0, 27) + " ..."}</Name>
-        <DetailsBox>
-          <Sale>10%</Sale>
-          <Price>27,540원</Price>
-        </DetailsBox>
-      </ProductBox>
-      <ProductBox>
+        <ProductBox />
+      </Box>
+      <Box>
         <Idx>7</Idx>
-        <Img src="https://image.brandi.me/cproduct/2022/03/07/SB000000000054841182_1646620295_image1_M.jpeg" />
-        <Name>{name.length < 30 ? name : name.slice(0, 27) + " ..."}</Name>
-        <DetailsBox>
-          <Sale>10%</Sale>
-          <Price>27,540원</Price>
-        </DetailsBox>
-      </ProductBox>
-      <ProductBox>
+        <ProductBox />
+      </Box>
+      <Box>
         <Idx>8</Idx>
-        <Img src="https://image.brandi.me/cproduct/2022/03/07/SB000000000054841182_1646620295_image1_M.jpeg" />
-        <Name>{name.length < 30 ? name : name.slice(0, 27) + " ..."}</Name>
-        <DetailsBox>
-          <Sale>10%</Sale>
-          <Price>27,540원</Price>
-        </DetailsBox>
-      </ProductBox>
+        <ProductBox />
+      </Box>
     </ProductsBox>
   );
 }

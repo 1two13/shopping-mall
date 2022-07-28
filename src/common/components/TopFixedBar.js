@@ -63,7 +63,6 @@ const IconsBox = styled.div`
   min-width: 165px;
   padding: 8px 0px 0px 0px;
   margin-left: 110px;
-  border: 1px solid blue;
   @media screen and (max-width: 1500px) {
     display: none;
   }

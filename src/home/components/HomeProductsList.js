@@ -6,7 +6,6 @@ const Title = styled.h2`
   margin: 120px 380px 0px 380px;
   font-size: 32px;
   font-weight: 700;
-  border: 1px solid red;
   @media screen and (max-width: 1058px) {
     min-width: 296px;
   }

@@ -1,26 +1,21 @@
-import reset from "styled-reset";
-import { createGlobalStyle } from "styled-components";
+import { Routes, Route } from "react-router-dom";
 
 import TopFixedBar from "./common/components/TopFixedBar";
 import MenuBar from "./common/components/MenuBar";
 
-import BigAnimatePic from "./home/components/BigAnimatePic";
-import HomeProductsList from "./home/components/HomeProductsList";
-
-const GlobalStyles = createGlobalStyle`
-  ${reset};
-`;
+import HomePages from "./pages/components/HomePages";
+import ProductDetailsPage from "./pages/components/ProductDetailsPage";
 
 function App() {
   return (
-    <div className="App">
-      <GlobalStyles />
-
+    <div>
       <TopFixedBar />
       <MenuBar />
 
-      <BigAnimatePic />
-      <HomeProductsList />
+      <Routes>
+        <Route path="/" element={<HomePages />} />
+        <Route path="/product" element={<ProductDetailsPage />} />
+      </Routes>
     </div>
   );
 }
