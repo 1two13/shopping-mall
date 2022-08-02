@@ -67,6 +67,8 @@ const FreeShip = styled.div`
 function ProductDetailsPage() {
   const [design, setDesign] = useState(null);
   const [color, setColor] = useState(null);
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  // console.log(selectedOptions);
 
   let price = 27540;
   // price에 천 단위로 콤마 붙이기
@@ -100,6 +102,10 @@ function ProductDetailsPage() {
             optionData={["화이트바디"]}
             onClick={(colorText) => {
               setColor(colorText);
+              let itemName = `${design}/${colorText}`;
+              if (!selectedOptions.includes(itemName)) {
+                setSelectedOptions([...selectedOptions, itemName]);
+              }
             }}
           />
         ) : (
@@ -107,15 +113,17 @@ function ProductDetailsPage() {
             disabled={true}
             label={"[바디색상]를 선택하세요."}
             optionData={["화이트바디"]}
-            onClick={(colorText) => {
-              setColor(colorText);
-            }}
           />
         )}
 
-        {design !== null && color !== null ? (
-          <DetailSelectedBox optionData={[design, color]} />
-        ) : null}
+        {selectedOptions.map((itemName) => {
+          return (
+            <DetailSelectedBox
+              key={itemName}
+              optionData={itemName.split(" ")}
+            />
+          );
+        })}
 
         {/* <div>
           <div>총 상품 금액</div>

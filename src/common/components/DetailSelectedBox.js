@@ -84,28 +84,31 @@ const PriceBox = styled.div`
 `;
 
 function DetailSelectedBox({ optionData }) {
+  const [remove, setRemove] = useState(false);
   const [cnt, setCnt] = useState(1);
+
   let price = 27540 * cnt;
   // price에 천 단위로 콤마 붙이기
   let CPrice = price.toLocaleString();
 
   // console.log(optionData, optionData.filter((v) => v));
 
+  const onClickRemoveBtn = () => {
+    setRemove((remove) => !remove);
+  };
+
   const onClickMinusCnt = () => {
     setCnt((cnt) => cnt - 1);
   };
-
   const onClickPlusCnt = () => {
     setCnt((cnt) => cnt + 1);
   };
 
   return (
-    <Div>
+    <Div className={remove ? "remove" : null}>
       <SelectedNBtn>
-        <SelectedOption>
-          {optionData.filter((v) => v).join(" / ")}
-        </SelectedOption>
-        <XButton>X</XButton>
+        <SelectedOption>{optionData}</SelectedOption>
+        <XButton onClick={onClickRemoveBtn}>X</XButton>
       </SelectedNBtn>
       <CntNPrice>
         <CntBox>
