@@ -47,7 +47,7 @@ const Option = styled.li`
 `;
 
 const CustomSelect = ({ label, optionData, onClick, disabled }) => {
-  const [ShowOptions, setShowOptions] = useState(false);
+  const [showOptions, setShowOptions] = useState(false);
   const [currentValue, setCurrentValue] = useState(label);
 
   const handleShowOptions = () => {
@@ -55,11 +55,10 @@ const CustomSelect = ({ label, optionData, onClick, disabled }) => {
   };
 
   const handleSelectedValue = (e) => {
-    const { innerText } = e.target;
-    // console.log(innerText);
-    setCurrentValue(innerText);
+    // console.log(e.target);
+    setCurrentValue(e.target.innerText);
     if (onClick) {
-      onClick(innerText);
+      onClick(e.target.innerText);
     }
   };
 
@@ -69,7 +68,7 @@ const CustomSelect = ({ label, optionData, onClick, disabled }) => {
       onClick={handleShowOptions}
     >
       <Label>{currentValue}</Label>
-      <SelectOptions show={ShowOptions}>
+      <SelectOptions show={showOptions}>
         {optionData.map((data) => (
           <Option key={data} onClick={handleSelectedValue}>
             {data}

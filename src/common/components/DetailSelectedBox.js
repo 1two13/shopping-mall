@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 const Div = styled.div`
@@ -37,41 +38,87 @@ const CntNPrice = styled.div`
   top: 40%;
 `;
 
-const Cnt = styled.div`
+const CntBox = styled.div`
   display: flex;
+  background-color: white;
+  align-items: center;
+  border: 1px solid #ebeef2;
+  border-radius: 4px;
 `;
 
-const Price = styled.div`
+const Button = styled.button`
+  width: 30px;
+  height: 30px;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 18px;
+  &.plusBtn {
+    line-height: 30px;
+  }
+`;
+
+const Cnt = styled.div`
+  width: 30px;
+  height: 30px;
+  border-left: 1px solid #ebeef2;
+  border-right: 1px solid #ebeef2;
+  text-align: center;
+  font-size: 18px;
+  line-height: 33px;
+`;
+
+const PriceBox = styled.div`
   display: flex;
   position: absolute;
   right: 10%;
+  top: 45%;
+  div:nth-child(1) {
+    font-weight: 700;
+    font-size: 23px;
+  }
+  div:nth-child(2) {
+    font-size: 14px;
+    padding: 8px 0px 0px 1px;
+  }
 `;
 
-const Button = styled.button``;
-
 function DetailSelectedBox({ optionData }) {
-  let price = 27540;
+  const [cnt, setCnt] = useState(1);
+  let price = 27540 * cnt;
   // price에 천 단위로 콤마 붙이기
   let CPrice = price.toLocaleString();
 
   // console.log(optionData, optionData.filter((v) => v));
 
+  const onClickMinusCnt = () => {
+    setCnt((cnt) => cnt - 1);
+  };
+
+  const onClickPlusCnt = () => {
+    setCnt((cnt) => cnt + 1);
+  };
+
   return (
     <Div>
       <SelectedNBtn>
-        <SelectedOption>{optionData.filter((v) => v).join("/")}</SelectedOption>
+        <SelectedOption>
+          {optionData.filter((v) => v).join(" / ")}
+        </SelectedOption>
         <XButton>X</XButton>
       </SelectedNBtn>
       <CntNPrice>
-        <Cnt>
-          <Button>-</Button>
-          <div>1</div>
-          <Button>+</Button>
-        </Cnt>
-        <Price>
+        <CntBox>
+          <Button onClick={onClickMinusCnt}>-</Button>
+          <Cnt>{cnt < 1 ? alert("최소 구매 수량은 1개 입니다.") : cnt}</Cnt>
+          <Button className={"plusBtn"} onClick={onClickPlusCnt}>
+            +
+          </Button>
+        </CntBox>
+        <PriceBox>
           <div>{CPrice}</div>
           <div>원</div>
-        </Price>
+        </PriceBox>
       </CntNPrice>
     </Div>
   );

@@ -11,7 +11,8 @@ const ImgNDetailsBox = styled.div`
 
 const Img = styled.img`
   width: 48%;
-  aspect-ratio: 1 / 1;
+  height: 40%;
+  /* aspect-ratio: 1 / 1; */
 `;
 
 const DetailsBox = styled.div`
@@ -60,6 +61,7 @@ const FreeShip = styled.div`
   font-size: 13px;
   font-weight: 700;
   background-color: #ebeef2;
+  color: #808893;
 `;
 
 function ProductDetailsPage() {
@@ -88,6 +90,7 @@ function ProductDetailsPage() {
           label={"[디자인]를 선택하세요."}
           optionData={["스카이레몬", "네이비그린"]}
           onClick={(designText) => {
+            // console.log(designText);
             setDesign(designText);
           }}
         />
@@ -110,7 +113,9 @@ function ProductDetailsPage() {
           />
         )}
 
-        {/* <DetailSelectedBox optionData={[design, color]} /> */}
+        {design !== null && color !== null ? (
+          <DetailSelectedBox optionData={[design, color]} />
+        ) : null}
 
         {/* <div>
           <div>총 상품 금액</div>
