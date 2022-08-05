@@ -116,11 +116,18 @@ function ProductDetailsPage() {
           />
         )}
 
-        {selectedOptions.map((itemName) => {
+        {selectedOptions.map((itemName, index) => {
           return (
             <DetailSelectedBox
-              key={itemName}
+              key={index}
               optionData={itemName.split(" ")}
+              onRemove={() =>
+                setSelectedOptions(
+                  selectedOptions.filter(
+                    (data) => data !== selectedOptions[index]
+                  )
+                )
+              }
             />
           );
         })}

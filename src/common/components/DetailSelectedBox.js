@@ -83,19 +83,15 @@ const PriceBox = styled.div`
   }
 `;
 
-function DetailSelectedBox({ optionData }) {
-  const [remove, setRemove] = useState(false);
+function DetailSelectedBox({ optionData, onRemove }) {
   const [cnt, setCnt] = useState(1);
+  // console.log(onRemove); // 선택된 문자열 옵션 데이터가 담긴 배열
 
   let price = 27540 * cnt;
   // price에 천 단위로 콤마 붙이기
   let CPrice = price.toLocaleString();
 
   // console.log(optionData, optionData.filter((v) => v));
-
-  const onClickRemoveBtn = () => {
-    setRemove((remove) => !remove);
-  };
 
   const onClickMinusCnt = () => {
     setCnt((cnt) => cnt - 1);
@@ -105,10 +101,10 @@ function DetailSelectedBox({ optionData }) {
   };
 
   return (
-    <Div className={remove ? "remove" : null}>
+    <Div>
       <SelectedNBtn>
         <SelectedOption>{optionData}</SelectedOption>
-        <XButton onClick={onClickRemoveBtn}>X</XButton>
+        <XButton onClick={onRemove}>X</XButton>
       </SelectedNBtn>
       <CntNPrice>
         <CntBox>
