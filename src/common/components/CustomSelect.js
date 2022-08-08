@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const SelectBox = styled.div`
@@ -46,7 +46,7 @@ const Option = styled.li`
   font-size: 16px;
 `;
 
-const CustomSelect = ({ label, optionData, onClick, disabled }) => {
+function CustomSelect({ label, optionData, onClick, disabled, shouldReset }) {
   const [showOptions, setShowOptions] = useState(false);
   const [currentValue, setCurrentValue] = useState(label);
 
@@ -61,6 +61,12 @@ const CustomSelect = ({ label, optionData, onClick, disabled }) => {
       onClick(e.target.innerText);
     }
   };
+
+  useEffect(() => {
+    if (shouldReset) {
+      setCurrentValue(label);
+    }
+  }, [shouldReset]);
 
   return (
     <SelectBox
@@ -77,6 +83,6 @@ const CustomSelect = ({ label, optionData, onClick, disabled }) => {
       </SelectOptions>
     </SelectBox>
   );
-};
+}
 
 export default CustomSelect;

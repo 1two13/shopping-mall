@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import CustomSelect from "../../common/components/CustomSelect";
@@ -70,6 +70,13 @@ function ProductDetailsPage() {
   const [selectedOptions, setSelectedOptions] = useState([]);
   // console.log(selectedOptions);
 
+  useEffect(() => {
+    if (design !== null && color !== null) {
+      setDesign(null);
+      setColor(null);
+    }
+  }, [design, color]);
+
   let price = 27540;
   // price에 천 단위로 콤마 붙이기
   let CPrice = price.toLocaleString();
@@ -95,6 +102,7 @@ function ProductDetailsPage() {
             // console.log(designText);
             setDesign(designText);
           }}
+          shouldReset={design !== null && color !== null}
         />
         {design !== null ? (
           <CustomSelect
@@ -107,6 +115,7 @@ function ProductDetailsPage() {
                 setSelectedOptions([...selectedOptions, itemName]);
               }
             }}
+            shouldReset={design !== null && color !== null}
           />
         ) : (
           <CustomSelect
@@ -131,6 +140,8 @@ function ProductDetailsPage() {
             />
           );
         })}
+
+        {/* 모든 CustomSelect 처음으로 리셋 */}
 
         {/* <div>
           <div>총 상품 금액</div>
