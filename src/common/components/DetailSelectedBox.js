@@ -83,21 +83,23 @@ const PriceBox = styled.div`
   }
 `;
 
-function DetailSelectedBox({ optionData, onRemove }) {
+function DetailSelectedBox({ optionData, onRemove, plusCnt, minusCnt }) {
   const [cnt, setCnt] = useState(1);
   // console.log(onRemove); // 선택된 문자열 옵션 데이터가 담긴 배열
 
-  let price = 27540 * cnt;
+  let price = 13000 * cnt;
   // price에 천 단위로 콤마 붙이기
-  let CPrice = price.toLocaleString();
+  let cPrice = price.toLocaleString();
 
   // console.log(optionData, optionData.filter((v) => v));
 
   const onClickMinusCnt = () => {
     setCnt((cnt) => cnt - 1);
+    minusCnt();
   };
   const onClickPlusCnt = () => {
     setCnt((cnt) => cnt + 1);
+    plusCnt();
   };
 
   return (
@@ -115,7 +117,7 @@ function DetailSelectedBox({ optionData, onRemove }) {
           </Button>
         </CntBox>
         <PriceBox>
-          <div>{CPrice}</div>
+          <div>{cPrice}</div>
           <div>원</div>
         </PriceBox>
       </CntNPrice>

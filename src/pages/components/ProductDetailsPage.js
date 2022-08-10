@@ -66,19 +66,36 @@ const FreeShip = styled.div`
 
 const TotalPriceBox = styled.div`
   display: flex;
-  margin-top: 30px;
+  justify-content: space-between;
+  margin-top: 50px;
 `;
 
-const TotalPriceBoxTitle = styled.div``;
+const TotalPriceBoxTitle = styled.div`
+  padding-top: 11px;
+  font-size: 18px;
+`;
 
-const TotalPrice = styled.div``;
+const TotalPrice = styled.div`
+  display: flex;
+  margin-right: 3px;
+  font-size: 30px;
+  font-weight: 700;
+  color: #ff204b;
+  div:nth-child(2) {
+    margin: 8px 0px 0px 1px;
+    font-size: 20px;
+    font-weight: 400;
+  }
+`;
 
 function ProductDetailsPage() {
   const [design, setDesign] = useState(null);
   const [color, setColor] = useState(null);
   const [selectedOptions, setSelectedOptions] = useState([]);
-  const shouldReset = design !== null && color !== null;
   // console.log(selectedOptions);
+  const [cnt, setCnt] = useState(0);
+  console.log(cnt);
+  const shouldReset = design !== null && color !== null;
 
   useEffect(() => {
     // 모든 state 값이 변경되었을 때
@@ -86,12 +103,14 @@ function ProductDetailsPage() {
       // setDesign 함수와 setColor 함수 null로 초기화
       setDesign(null);
       setColor(null);
+      setCnt((cnt) => cnt + 1);
     }
-  }, [design, color]);
+  }, [design, color, cnt]);
 
-  let price = 27540;
+  let price = 13000;
+  let totalPrice = (price * cnt).toLocaleString();
   // price에 천 단위로 콤마 붙이기
-  let CPrice = price.toLocaleString();
+  let cPrice = price.toLocaleString();
 
   return (
     <ImgNDetailsBox>
@@ -99,7 +118,7 @@ function ProductDetailsPage() {
       <DetailsBox>
         <Title>full bloom 디자인 [아크릴톡]</Title>
         <PriceBox>
-          <div>{CPrice}</div>
+          <div>{cPrice}</div>
           <div>원</div>
         </PriceBox>
         <DeliveryBox>
@@ -136,7 +155,6 @@ function ProductDetailsPage() {
             optionData={["화이트바디"]}
           />
         )}
-
         {selectedOptions.map((itemName, index) => {
           return (
             <DetailSelectedBox
@@ -149,14 +167,22 @@ function ProductDetailsPage() {
                   )
                 )
               }
+              plusCnt={() => {
+                setCnt((cnt) => cnt + 1);
+              }}
+              minusCnt={() => {
+                setCnt((cnt) => cnt - 1);
+              }}
             />
           );
         })}
 
         <TotalPriceBox>
           <TotalPriceBoxTitle>총 상품 금액</TotalPriceBoxTitle>
-          <TotalPrice>27,540</TotalPrice>
-          <div>원</div>
+          <TotalPrice>
+            <div>{totalPrice}</div>
+            <div>원</div>
+          </TotalPrice>
         </TotalPriceBox>
       </DetailsBox>
     </ImgNDetailsBox>
