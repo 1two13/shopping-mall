@@ -21,7 +21,7 @@ const DetailsBox = styled.div`
 `;
 
 const Title = styled.div`
-  margin-top: 40px;
+  margin-top: 25px;
   font-size: 26px;
 `;
 
@@ -64,14 +64,26 @@ const FreeShip = styled.div`
   color: #808893;
 `;
 
+const TotalPriceBox = styled.div`
+  display: flex;
+  margin-top: 30px;
+`;
+
+const TotalPriceBoxTitle = styled.div``;
+
+const TotalPrice = styled.div``;
+
 function ProductDetailsPage() {
   const [design, setDesign] = useState(null);
   const [color, setColor] = useState(null);
   const [selectedOptions, setSelectedOptions] = useState([]);
+  const shouldReset = design !== null && color !== null;
   // console.log(selectedOptions);
 
   useEffect(() => {
-    if (design !== null && color !== null) {
+    // 모든 state 값이 변경되었을 때
+    if (shouldReset) {
+      // setDesign 함수와 setColor 함수 null로 초기화
       setDesign(null);
       setColor(null);
     }
@@ -102,7 +114,7 @@ function ProductDetailsPage() {
             // console.log(designText);
             setDesign(designText);
           }}
-          shouldReset={design !== null && color !== null}
+          shouldReset={shouldReset}
         />
         {design !== null ? (
           <CustomSelect
@@ -115,7 +127,7 @@ function ProductDetailsPage() {
                 setSelectedOptions([...selectedOptions, itemName]);
               }
             }}
-            shouldReset={design !== null && color !== null}
+            shouldReset={shouldReset}
           />
         ) : (
           <CustomSelect
@@ -141,13 +153,11 @@ function ProductDetailsPage() {
           );
         })}
 
-        {/* 모든 CustomSelect 처음으로 리셋 */}
-
-        {/* <div>
-          <div>총 상품 금액</div>
-          <div>27,540</div>
+        <TotalPriceBox>
+          <TotalPriceBoxTitle>총 상품 금액</TotalPriceBoxTitle>
+          <TotalPrice>27,540</TotalPrice>
           <div>원</div>
-        </div> */}
+        </TotalPriceBox>
       </DetailsBox>
     </ImgNDetailsBox>
   );

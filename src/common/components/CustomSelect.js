@@ -63,7 +63,9 @@ function CustomSelect({ label, optionData, onClick, disabled, shouldReset }) {
   };
 
   useEffect(() => {
+    // 모든 state 값이 변경되었을 때, 즉 design 과 color 값이 null 이 아닐 때
     if (shouldReset) {
+      // label 값 보여주기
       setCurrentValue(label);
     }
   }, [shouldReset]);
