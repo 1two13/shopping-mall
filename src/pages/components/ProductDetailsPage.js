@@ -4,6 +4,7 @@ import styled from "styled-components";
 import CustomSelect from "../../common/components/CustomSelect";
 import DetailSelectedBox from "../../common/components/DetailSelectedBox";
 import TotalPriceBox from "../../productDetails/components/TotalPriceBox";
+import ButtonBox from "../../productDetails/components/ButtonBox";
 
 const ImgNDetailsBox = styled.div`
   display: flex;
@@ -157,6 +158,8 @@ function ProductDetailsPage() {
         })}
 
         <TotalPriceBox totalPrice={totalPrice} />
+
+        <ButtonBox />
       </DetailsBox>
     </ImgNDetailsBox>
   );
