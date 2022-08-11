@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import CustomSelect from "../../common/components/CustomSelect";
 import DetailSelectedBox from "../../common/components/DetailSelectedBox";
+import TotalPriceBox from "../../productDetails/components/TotalPriceBox";
 
 const ImgNDetailsBox = styled.div`
   display: flex;
@@ -64,37 +65,12 @@ const FreeShip = styled.div`
   color: #808893;
 `;
 
-const TotalPriceBox = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-top: 50px;
-`;
-
-const TotalPriceBoxTitle = styled.div`
-  padding-top: 11px;
-  font-size: 18px;
-`;
-
-const TotalPrice = styled.div`
-  display: flex;
-  margin-right: 3px;
-  font-size: 30px;
-  font-weight: 700;
-  color: #ff204b;
-  div:nth-child(2) {
-    margin: 8px 0px 0px 1px;
-    font-size: 20px;
-    font-weight: 400;
-  }
-`;
-
 function ProductDetailsPage() {
   const [design, setDesign] = useState(null);
   const [color, setColor] = useState(null);
   const [selectedOptions, setSelectedOptions] = useState([]);
   // console.log(selectedOptions);
   const [cnt, setCnt] = useState(0);
-  console.log(cnt);
   const shouldReset = design !== null && color !== null;
 
   useEffect(() => {
@@ -126,6 +102,7 @@ function ProductDetailsPage() {
           <div>일반배송</div>
           <FreeShip>무료배송</FreeShip>
         </DeliveryBox>
+
         <CustomSelect
           label={"[디자인]를 선택하세요."}
           optionData={["스카이레몬", "네이비그린"]}
@@ -135,6 +112,7 @@ function ProductDetailsPage() {
           }}
           shouldReset={shouldReset}
         />
+
         {design !== null ? (
           <CustomSelect
             label={"[바디색상]를 선택하세요."}
@@ -155,6 +133,7 @@ function ProductDetailsPage() {
             optionData={["화이트바디"]}
           />
         )}
+
         {selectedOptions.map((itemName, index) => {
           return (
             <DetailSelectedBox
@@ -177,13 +156,7 @@ function ProductDetailsPage() {
           );
         })}
 
-        <TotalPriceBox>
-          <TotalPriceBoxTitle>총 상품 금액</TotalPriceBoxTitle>
-          <TotalPrice>
-            <div>{totalPrice}</div>
-            <div>원</div>
-          </TotalPrice>
-        </TotalPriceBox>
+        <TotalPriceBox totalPrice={totalPrice} />
       </DetailsBox>
     </ImgNDetailsBox>
   );
