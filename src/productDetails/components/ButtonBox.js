@@ -12,7 +12,7 @@ const StyledButtonBox = styled.div`
 `;
 
 const BuyBtn = styled.button`
-  min-width: 200px;
+  width: 200px;
   border-radius: 5px;
   border: none;
   font-size: 18px;
@@ -25,7 +25,7 @@ const BuyBtn = styled.button`
 `;
 
 const CartNHeartBtn = styled.button`
-  min-width: 60px;
+  width: 60px;
   border: 1px solid #e3e5e8;
   border-radius: 5px;
   background-color: white;

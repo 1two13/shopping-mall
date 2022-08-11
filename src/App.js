@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import TopFixedBar from "./common/components/TopFixedBar";
 import MenuBar from "./common/components/MenuBar";
 
-import HomePages from "./pages/components/HomePages";
+import HomePage from "./pages/components/HomePage";
 import ProductDetailsPage from "./pages/components/ProductDetailsPage";
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
       <MenuBar />
 
       <Routes>
-        <Route path="/" element={<HomePages />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/product" element={<ProductDetailsPage />} />
       </Routes>
     </div>
