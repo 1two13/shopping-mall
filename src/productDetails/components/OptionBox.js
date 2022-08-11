@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 
 import CustomSelect from "../../common/components/CustomSelect";
 import DetailSelectedBox from "../../common/components/DetailSelectedBox";
-import ButtonBox from "./ButtonBox";
 import TotalPriceBox from "./TotalPriceBox";
+import ButtonBox from "./ButtonBox";
 
 function OptionBox() {
   const [design, setDesign] = useState(null);

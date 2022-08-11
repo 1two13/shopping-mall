@@ -1,22 +1,29 @@
 import styled from "styled-components";
+import BigDetailsPage from "../../productDetails/components/BigDetailsPage";
 
-import ButtonBox from "../../productDetails/components/ButtonBox";
 import OptionBox from "../../productDetails/components/OptionBox";
+
+const StyledProductDetailsPage = styled.div`
+  margin: 20px 380px 15px 380px;
+`;
 
 const ImgNDetailsBox = styled.div`
   display: flex;
-  margin: 20px 380px 15px 380px;
 `;
 
 const Img = styled.img`
   width: 48%;
   height: 40%;
+  margin-right: 50px;
   /* aspect-ratio: 1 / 1; */
 `;
 
 const DetailsBox = styled.div`
-  width: 52%;
-  margin-left: 50px;
+  width: calc(52% - 50px);
+  @media screen and (max-width: 1280px) {
+    min-width: 683px;
+    display: none;
+  }
 `;
 
 const Title = styled.div`
@@ -69,25 +76,28 @@ function ProductDetailsPage() {
   let cPrice = price.toLocaleString();
 
   return (
-    <ImgNDetailsBox>
-      <Img src="https://image.brandi.me/cproduct/2022/03/07/SB000000000054841182_1646620295_image1_M.jpeg" />
-      <DetailsBox>
-        <Title>full bloom 디자인 [아크릴톡]</Title>
+    <StyledProductDetailsPage>
+      <ImgNDetailsBox>
+        <Img src="https://image.brandi.me/cproduct/2022/03/07/SB000000000054841182_1646620295_image1_M.jpeg" />
+        <DetailsBox>
+          <Title>full bloom 디자인 [아크릴톡]</Title>
 
-        <PriceBox>
-          <div>{cPrice}</div>
-          <div>원</div>
-        </PriceBox>
+          <PriceBox>
+            <div>{cPrice}</div>
+            <div>원</div>
+          </PriceBox>
 
-        <DeliveryBox>
-          <div>배송정보</div>
-          <div>일반배송</div>
-          <FreeShip>무료배송</FreeShip>
-        </DeliveryBox>
+          <DeliveryBox>
+            <div>배송정보</div>
+            <div>일반배송</div>
+            <FreeShip>무료배송</FreeShip>
+          </DeliveryBox>
 
-        <OptionBox />
-      </DetailsBox>
-    </ImgNDetailsBox>
+          <OptionBox />
+        </DetailsBox>
+      </ImgNDetailsBox>
+      <BigDetailsPage />
+    </StyledProductDetailsPage>
   );
 }
 

@@ -1,9 +1,10 @@
 import styled from "styled-components";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import { faHeart } from "@fortawesome/free-regular-svg-icons";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 const StyledButtonBox = styled.div`
   display: flex;
@@ -32,10 +33,15 @@ const CartNHeartBtn = styled.button`
   border-radius: 5px;
   background-color: white;
   margin-left: 8px;
+  &.colored {
+    color: red;
+    fill: red;
+  }
 `;
 
 function ButtonBox({ design, color, selectedOptions }) {
   const navigate = useNavigate();
+  const [colored, setColored] = useState(false);
 
   const moveToCheckoutPage = () => {
     if (selectedOptions.length > 0) {
@@ -51,6 +57,10 @@ function ButtonBox({ design, color, selectedOptions }) {
     }
   };
 
+  const fillColor = () => {
+    setColored((color) => !color);
+  };
+
   return (
     <StyledButtonBox>
       <BuyBtn onClick={moveToCheckoutPage}>바로 구매</BuyBtn>
@@ -60,7 +70,7 @@ function ButtonBox({ design, color, selectedOptions }) {
       <CartNHeartBtn>
         <FontAwesomeIcon icon={faCartShopping} size="2x" />
       </CartNHeartBtn>
-      <CartNHeartBtn>
+      <CartNHeartBtn onClick={fillColor} className={colored ? "colored" : ""}>
         <FontAwesomeIcon icon={faHeart} size="2x" />
       </CartNHeartBtn>
     </StyledButtonBox>
