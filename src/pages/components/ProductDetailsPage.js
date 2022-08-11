@@ -73,10 +73,12 @@ function ProductDetailsPage() {
       <Img src="https://image.brandi.me/cproduct/2022/03/07/SB000000000054841182_1646620295_image1_M.jpeg" />
       <DetailsBox>
         <Title>full bloom 디자인 [아크릴톡]</Title>
+
         <PriceBox>
           <div>{cPrice}</div>
           <div>원</div>
         </PriceBox>
+
         <DeliveryBox>
           <div>배송정보</div>
           <div>일반배송</div>
@@ -84,8 +86,6 @@ function ProductDetailsPage() {
         </DeliveryBox>
 
         <OptionBox />
-
-        <ButtonBox />
       </DetailsBox>
     </ImgNDetailsBox>
   );

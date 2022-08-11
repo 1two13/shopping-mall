@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
@@ -21,6 +22,7 @@ const BuyBtn = styled.button`
   background-color: #1e1e1e;
   &.Naver {
     background-color: #00c73c;
+    margin-left: 8px;
   }
 `;
 
@@ -29,13 +31,32 @@ const CartNHeartBtn = styled.button`
   border: 1px solid #e3e5e8;
   border-radius: 5px;
   background-color: white;
+  margin-left: 8px;
 `;
 
-function ButtonBox() {
+function ButtonBox({ design, color, selectedOptions }) {
+  const navigate = useNavigate();
+
+  const moveToCheckoutPage = () => {
+    if (selectedOptions.length > 0) {
+      navigate("/checkout");
+    } else if (
+      design === null &&
+      color === null &&
+      selectedOptions.length < 1
+    ) {
+      alert("[디자인]를 선택하세요.");
+    } else if (color === null) {
+      alert("[바디색상]를 선택하세요.");
+    }
+  };
+
   return (
     <StyledButtonBox>
-      <BuyBtn>바로 구매</BuyBtn>
-      <BuyBtn className="Naver">N Pay 구매</BuyBtn>
+      <BuyBtn onClick={moveToCheckoutPage}>바로 구매</BuyBtn>
+      <BuyBtn className="Naver" onClick={moveToCheckoutPage}>
+        N Pay 구매
+      </BuyBtn>
       <CartNHeartBtn>
         <FontAwesomeIcon icon={faCartShopping} size="2x" />
       </CartNHeartBtn>

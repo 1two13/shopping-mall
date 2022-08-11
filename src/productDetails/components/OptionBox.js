@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import CustomSelect from "../../common/components/CustomSelect";
 import DetailSelectedBox from "../../common/components/DetailSelectedBox";
+import ButtonBox from "./ButtonBox";
 import TotalPriceBox from "./TotalPriceBox";
 
 function OptionBox() {
@@ -10,8 +11,8 @@ function OptionBox() {
   const [selectedOptions, setSelectedOptions] = useState([]);
   // console.log(selectedOptions);
   const [cnt, setCnt] = useState(0);
-  const shouldReset = design !== null && color !== null;
   // console.log(cnt);
+  const shouldReset = design !== null && color !== null;
 
   useEffect(() => {
     // 모든 state 값이 변경되었을 때
@@ -26,7 +27,7 @@ function OptionBox() {
   let price = 13000;
   let totalPrice = (price * cnt).toLocaleString();
   // price에 천 단위로 콤마 붙이기
-  let cPrice = price.toLocaleString();
+
   return (
     <div>
       <CustomSelect
@@ -83,6 +84,12 @@ function OptionBox() {
       })}
 
       <TotalPriceBox totalPrice={totalPrice} />
+
+      <ButtonBox
+        design={design}
+        color={color}
+        selectedOptions={selectedOptions}
+      />
     </div>
   );
 }

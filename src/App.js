@@ -5,6 +5,7 @@ import MenuBar from "./common/components/MenuBar";
 
 import HomePage from "./pages/components/HomePage";
 import ProductDetailsPage from "./pages/components/ProductDetailsPage";
+import CheckoutPage from "./pages/components/CheckoutPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/product" element={<ProductDetailsPage />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
       </Routes>
     </div>
   );
