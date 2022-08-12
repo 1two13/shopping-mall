@@ -1,6 +1,7 @@
+import { useEffect } from "react";
 import styled from "styled-components";
-import BigDetailsPage from "../../productDetails/components/BigDetailsPage";
 
+import BigDetailsPage from "../../productDetails/components/BigDetailsPage";
 import OptionBox from "../../productDetails/components/OptionBox";
 
 const StyledProductDetailsPage = styled.div`
@@ -74,6 +75,10 @@ function ProductDetailsPage() {
   let price = 13000;
   // price에 천 단위로 콤마 붙이기
   let cPrice = price.toLocaleString();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <StyledProductDetailsPage>
