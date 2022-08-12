@@ -38,8 +38,7 @@ function ProductBox() {
     navigate("/product");
   };
 
-  let name =
-    "~2XL[기장선택!!/3Color]뒷밴딩 안단추 클립 찰랑 핀턱 와이드 슬랙스팬츠_복플레이스";
+  let name = "full bloom 디자인 [아크릴톡]";
 
   return (
     <Div>
@@ -50,7 +49,7 @@ function ProductBox() {
       <Name>{name.length < 30 ? name : name.slice(0, 27) + " ..."}</Name>
       <DetailsBox>
         <Sale>10%</Sale>
-        <Price>27,540원</Price>
+        <Price>13,000원</Price>
       </DetailsBox>
     </Div>
   );

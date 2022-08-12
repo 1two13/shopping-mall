@@ -11,29 +11,6 @@ const Box = styled.div`
   margin-bottom: 30px;
 `;
 
-const Img = styled.img`
-  width: 95%;
-  aspect-ratio: 3 / 3.1;
-`;
-
-const Name = styled.div`
-  margin-top: 7px;
-`;
-
-const DetailsBox = styled.div`
-  display: flex;
-  margin-top: 12px;
-  font-size: 20px;
-  font-weight: 700;
-`;
-
-const Sale = styled.div`
-  color: #ff204b;
-  margin-right: 7px;
-`;
-
-const Price = styled.div``;
-
 const Idx = styled.div`
   position: absolute;
   width: 32px;
