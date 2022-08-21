@@ -25,8 +25,12 @@ function OptionBox() {
   }, [design, color, cnt]);
 
   let price = 13000;
-  let totalPrice = (price * cnt).toLocaleString();
   // price에 천 단위로 콤마 붙이기
+  let totalPrice = (price * cnt).toLocaleString();
+
+  localStorage.setItem("optionData", JSON.stringify(selectedOptions));
+  let optionData = localStorage.getItem("optionData");
+  // console.log(JSON.parse(optionData)[1]);
 
   return (
     <div>

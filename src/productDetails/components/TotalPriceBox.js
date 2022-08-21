@@ -25,6 +25,8 @@ const TotalPrice = styled.div`
 `;
 
 function TotalPriceBox({ totalPrice }) {
+  localStorage.setItem("totalPrice", totalPrice);
+
   return (
     <StyledTotalPriceBox>
       <TotalPriceBoxTitle>총 상품 금액</TotalPriceBoxTitle>
