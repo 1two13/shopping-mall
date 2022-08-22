@@ -92,27 +92,6 @@ function DetailSelectedBox({ optionData, onRemove, plusCnt, minusCnt }) {
   let cPrice = price.toLocaleString();
 
   // console.log(optionData, optionData.filter((v) => v));
-  // let arr = [];
-  // arr.push(optionData);
-  // console.log(arr);
-  // console.log(optionData);
-
-  const [todo, setTodo] = useState([{ temp: "" }]);
-  let [data, setData] = useState(optionData);
-  let [newTodo, setNewTodo] = useState({ temp: "" });
-
-  // console.log(optionData);
-  // useEffect(() => setNewTodo({ name: inputValue }), [inputValue]);
-  // useEffect(() => {
-  //   setNewTodo({ temp: data });
-  //   window.localStorage.setItem("temp", JSON.stringify(data));
-  // }, [data]);
-
-  // console.log(newTodo);
-
-  // useEffect(() => {
-  //   window.localStorage.setItem("temp", JSON.stringify(data));
-  // }, [data]);
 
   const onClickMinusCnt = () => {
     setCnt((cnt) => cnt - 1);
