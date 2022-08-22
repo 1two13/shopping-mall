@@ -43,19 +43,17 @@ const Price = styled.div`
   font-weight: 600;
 `;
 
-function OrderInfoMainBox({ optionData }) {
+function OrderInfoMainBox({ optionData, eachCnt, eachPrice }) {
   return (
     <MainBox>
       <Img src="https://image.brandi.me/cproduct/2022/03/07/SB000000000054841182_1646620295_image1_M.jpeg" />
       <MainBoxInfo>
         <div>full bloom 디자인 [아크릴톡]</div>
         <div>{optionData}</div>
-        {/* 변하는 개수 */}
-        <div>1개</div>
+        <div>{eachCnt}개</div>
       </MainBoxInfo>
       <CouponStatus>적용 가능한 쿠폰이 없습니다.</CouponStatus>
-      {/* 개수에 따라 변하는 가격 */}
-      <Price>13,000원</Price>
+      <Price>{eachPrice.toLocaleString()}원</Price>
     </MainBox>
   );
 }

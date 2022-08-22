@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import OrderInfoBox from "../../checkout/components/OrderInfoBox";
-import OrderierInfoBox from "../../checkout/components/OrderierInfoBox";
+import OrdererInfoBox from "../../checkout/components/OrdererInfoBox";
 import DeliveryDesInfoBox from "../../checkout/components/DeliveryDesInfoBox";
 
 const StyledCheckoutPage = styled.div`
@@ -21,7 +21,7 @@ function CheckoutPage() {
     <StyledCheckoutPage>
       <H1>주문하기</H1>
       <OrderInfoBox />
-      {/* <OrderierInfoBox /> */}
+      <OrdererInfoBox />
       {/* <DeliveryDesInfoBox /> */}
     </StyledCheckoutPage>
   );

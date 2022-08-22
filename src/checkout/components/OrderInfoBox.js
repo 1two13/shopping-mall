@@ -46,7 +46,7 @@ const TotalPrice = styled.div`
 `;
 
 function OrderInfoBox() {
-  console.log(JSON.parse(localStorage.getItem("optionData")));
+  // console.log(JSON.parse(localStorage.getItem("optionData")));
   return (
     <div>
       <Title>주문상품 정보</Title>
@@ -57,13 +57,19 @@ function OrderInfoBox() {
       </SmallTitleBox>
 
       {JSON.parse(localStorage.getItem("optionData")).map((index) => {
-        console.log(index);
-        return <OrderInfoMainBox key={index} optionData={index} />;
+        return (
+          <OrderInfoMainBox
+            key={index}
+            optionData={index[0]}
+            eachCnt={index[1]}
+            eachPrice={index[2]}
+          />
+        );
       })}
 
       <TotalPrice>
         <div>총 주문금액</div>
-        <div>{localStorage.getItem("totalPrice")}</div>
+        <div>{localStorage.getItem("totalPrice")}원</div>
       </TotalPrice>
     </div>
   );

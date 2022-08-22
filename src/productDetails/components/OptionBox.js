@@ -10,8 +10,8 @@ function OptionBox() {
   const [color, setColor] = useState(null);
   const [selectedOptions, setSelectedOptions] = useState([]);
   // console.log(selectedOptions);
-  const [cnt, setCnt] = useState(0);
-  // console.log(cnt);
+  const [cntMap, setCntMap] = useState({});
+  console.log(cntMap);
   const shouldReset = design !== null && color !== null;
 
   useEffect(() => {
@@ -20,15 +20,26 @@ function OptionBox() {
       // setDesign 함수와 setColor 함수 null로 초기화
       setDesign(null);
       setColor(null);
-      setCnt((cnt) => cnt + 1);
     }
-  }, [design, color, cnt]);
+  }, [design, color]);
 
   let price = 13000;
+  let totalCnt = 0;
+  // 선택된 총 개수를 구하는 for문
+  for (let key in cntMap) {
+    totalCnt += cntMap[key];
+  }
   // price에 천 단위로 콤마 붙이기
-  let totalPrice = (price * cnt).toLocaleString();
+  let totalPrice = (price * totalCnt).toLocaleString();
 
-  localStorage.setItem("optionData", JSON.stringify(selectedOptions));
+  useEffect(() => {
+    localStorage.setItem(
+      "optionData",
+      JSON.stringify(
+        selectedOptions.map((v) => [v, cntMap[v], price * cntMap[v]])
+      )
+    );
+  }, [selectedOptions, cntMap]);
 
   return (
     <div>
@@ -51,6 +62,10 @@ function OptionBox() {
             let itemName = `${design}/${colorText}`;
             if (!selectedOptions.includes(itemName)) {
               setSelectedOptions([...selectedOptions, itemName]);
+              setCntMap((oldCntMap) => ({
+                ...oldCntMap,
+                [itemName]: 1,
+              }));
             }
           }}
           shouldReset={shouldReset}
@@ -68,6 +83,7 @@ function OptionBox() {
           <DetailSelectedBox
             key={index}
             optionData={itemName.split(" ")}
+            price={price}
             onRemove={() =>
               setSelectedOptions(
                 selectedOptions.filter(
@@ -76,10 +92,16 @@ function OptionBox() {
               )
             }
             plusCnt={() => {
-              setCnt((cnt) => cnt + 1);
+              setCntMap((oldCntMap) => ({
+                ...oldCntMap,
+                [itemName]: oldCntMap[itemName] + 1,
+              }));
             }}
             minusCnt={() => {
-              setCnt((cnt) => cnt - 1);
+              setCntMap((oldCntMap) => ({
+                ...oldCntMap,
+                [itemName]: oldCntMap[itemName] - 1,
+              }));
             }}
           />
         );
