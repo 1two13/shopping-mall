@@ -55,22 +55,22 @@ function OrdererInfoBox() {
   const [secondInput, setSecondInput] = useState("");
   const [thirdInput, setThirdInput] = useState("");
 
-  const firstInputOnChangeHandler = (e, maxLength) => {
+  const firstInputOnChangeHandler = (e) => {
     // 한글 입력 제한
     e = e.replace(/[^a-zA-Z-_0-9]/g, "");
-    setFirstInput(e.slice(0, maxLength));
+    setFirstInput(e.slice(0, 3));
   };
 
-  const secondInputOnChangeHandler = (e, maxLength) => {
+  const secondInputOnChangeHandler = (e) => {
     // 한글 입력 제한
     e = e.replace(/[^a-zA-Z-_0-9]/g, "");
-    setSecondInput(e.slice(0, maxLength));
+    setSecondInput(e.slice(0, 4));
   };
 
-  const thirdInputOnChangeHandler = (e, maxLength) => {
+  const thirdInputOnChangeHandler = (e) => {
     // 한글 입력 제한
     e = e.replace(/[^a-zA-Z-_0-9]/g, "");
-    setThirdInput(e.slice(0, maxLength));
+    setThirdInput(e.slice(0, 4));
   };
 
   return (
@@ -84,21 +84,21 @@ function OrdererInfoBox() {
         <SubTitle>휴대폰</SubTitle>
         <Input
           type="number"
-          onChange={(e) => firstInputOnChangeHandler(e.target.value, 3)}
+          onChange={(e) => firstInputOnChangeHandler(e.target.value)}
           value={firstInput}
           className="phoneNum"
         />
         -
         <Input
           type="number"
-          onChange={(e) => secondInputOnChangeHandler(e.target.value, 4)}
+          onChange={(e) => secondInputOnChangeHandler(e.target.value)}
           value={secondInput}
           className="phoneNum"
         />
         -
         <Input
           type="number"
-          onChange={(e) => thirdInputOnChangeHandler(e.target.value, 4)}
+          onChange={(e) => thirdInputOnChangeHandler(e.target.value)}
           value={thirdInput}
           className="phoneNum"
         />
