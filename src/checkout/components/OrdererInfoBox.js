@@ -37,7 +37,7 @@ const Input = styled.input`
     width: 77%;
   }
   &.phoneNum {
-    width: 4%;
+    width: 5%;
     text-align: center;
   }
   &.email {
@@ -51,12 +51,26 @@ const SubTitle = styled.div`
 `;
 
 function OrdererInfoBox() {
-  const [phoneInput, setPhoneInput] = useState("");
+  const [firstInput, setFirstInput] = useState("");
+  const [secondInput, setSecondInput] = useState("");
+  const [thirdInput, setThirdInput] = useState("");
 
-  const onChange = (e, maxLength) => {
+  const firstInputOnChangeHandler = (e, maxLength) => {
     // 한글 입력 제한
     e = e.replace(/[^a-zA-Z-_0-9]/g, "");
-    setPhoneInput(e.slice(0, maxLength));
+    setFirstInput(e.slice(0, maxLength));
+  };
+
+  const secondInputOnChangeHandler = (e, maxLength) => {
+    // 한글 입력 제한
+    e = e.replace(/[^a-zA-Z-_0-9]/g, "");
+    setSecondInput(e.slice(0, maxLength));
+  };
+
+  const thirdInputOnChangeHandler = (e, maxLength) => {
+    // 한글 입력 제한
+    e = e.replace(/[^a-zA-Z-_0-9]/g, "");
+    setThirdInput(e.slice(0, maxLength));
   };
 
   return (
@@ -70,14 +84,24 @@ function OrdererInfoBox() {
         <SubTitle>휴대폰</SubTitle>
         <Input
           type="number"
-          onChange={(e) => onChange(e.target.value, 3)}
-          value={phoneInput}
+          onChange={(e) => firstInputOnChangeHandler(e.target.value, 3)}
+          value={firstInput}
           className="phoneNum"
         />
         -
-        <Input type="tel" className="phoneNum" maxLength="4" />
+        <Input
+          type="number"
+          onChange={(e) => secondInputOnChangeHandler(e.target.value, 4)}
+          value={secondInput}
+          className="phoneNum"
+        />
         -
-        <Input type="tel" className="phoneNum" maxLength="4" />
+        <Input
+          type="number"
+          onChange={(e) => thirdInputOnChangeHandler(e.target.value, 4)}
+          value={thirdInput}
+          className="phoneNum"
+        />
       </OrdererBox>
       <OrdererBox className="emailBox">
         <SubTitle>이메일</SubTitle>
