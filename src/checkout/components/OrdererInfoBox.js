@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const Title = styled.h2`
@@ -27,11 +27,12 @@ const Input = styled.input`
   :focus {
     outline: none;
   }
-  /* ::-webkit-inner-spin-button {
+  // type을 number로 설정했을 때 생기는 증감 아이콘
+  ::-webkit-inner-spin-button {
     appearance: none;
     -moz-appearance: none;
     -webkit-appearance: none;
-  } */
+  }
   &.name {
     width: 77%;
   }
@@ -50,8 +51,12 @@ const SubTitle = styled.div`
 `;
 
 function OrdererInfoBox() {
-  const onKeyUp = (e) => {
-    e.target.value.replace(/[^0-9]/g, "");
+  const [phoneInput, setPhoneInput] = useState("");
+
+  const onChange = (e, maxLength) => {
+    // 한글 입력 제한
+    e = e.replace(/[^a-zA-Z-_0-9]/g, "");
+    setPhoneInput(e.slice(0, maxLength));
   };
 
   return (
@@ -63,7 +68,12 @@ function OrdererInfoBox() {
       </OrdererBox>
       <OrdererBox>
         <SubTitle>휴대폰</SubTitle>
-        <Input type="tel" className="phoneNum" maxLength="3" />
+        <Input
+          type="number"
+          onChange={(e) => onChange(e.target.value, 3)}
+          value={phoneInput}
+          className="phoneNum"
+        />
         -
         <Input type="tel" className="phoneNum" maxLength="4" />
         -
