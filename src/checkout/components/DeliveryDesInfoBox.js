@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import img from "../../images/downArrow.png";
 
 const Title = styled.h2`
   padding-bottom: 10px;
@@ -156,7 +155,6 @@ function DeliveryDesInfoBox() {
           <option>경비(관리)실에 맡겨 주세요.</option>
           <option>택배함에 넣어주세요.</option>
           <option>직접 받겠습니다.</option>
-          <option>직접 입력</option>
         </Select>
       </DeliveryDesBox>
     </div>
