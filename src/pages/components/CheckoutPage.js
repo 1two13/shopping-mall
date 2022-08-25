@@ -22,7 +22,7 @@ function CheckoutPage() {
       <H1>주문하기</H1>
       <OrderInfoBox />
       <OrdererInfoBox />
-      {/* <DeliveryDesInfoBox /> */}
+      <DeliveryDesInfoBox />
     </StyledCheckoutPage>
   );
 }
