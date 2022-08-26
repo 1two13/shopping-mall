@@ -28,6 +28,7 @@ const Button = styled.button`
   border: 1px solid #e4e6e9;
   border-radius: 8px;
   background-color: white;
+  cursor: pointer;
 `;
 
 function PaymentMethod() {

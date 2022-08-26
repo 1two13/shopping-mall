@@ -18,6 +18,21 @@ const H1 = styled.h1`
   font-weight: 400;
 `;
 
+const Div = styled.div`
+  text-align: center;
+`;
+
+const Button = styled.button`
+  width: 270px;
+  height: 80px;
+  margin: 90px 0px 100px 0px;
+  border: none;
+  font-size: 20px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+`;
+
 function CheckoutPage() {
   return (
     <StyledCheckoutPage>
@@ -27,6 +42,9 @@ function CheckoutPage() {
       <DeliveryDesInfoBox />
       <FinalAmount />
       <PaymentMethod />
+      <Div>
+        <Button>결제하기</Button>
+      </Div>
     </StyledCheckoutPage>
   );
 }
