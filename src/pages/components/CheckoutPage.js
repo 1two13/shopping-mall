@@ -5,6 +5,7 @@ import OrderInfoBox from "../../checkout/components/OrderInfoBox";
 import OrdererInfoBox from "../../checkout/components/OrdererInfoBox";
 import DeliveryDesInfoBox from "../../checkout/components/DeliveryDesInfoBox";
 import FinalAmount from "../../checkout/components/FinalAmount";
+import PaymentMethod from "../../checkout/components/PaymentMethod";
 
 const StyledCheckoutPage = styled.div`
   margin: 20px 380px 15px 380px;
@@ -25,6 +26,7 @@ function CheckoutPage() {
       <OrdererInfoBox />
       <DeliveryDesInfoBox />
       <FinalAmount />
+      <PaymentMethod />
     </StyledCheckoutPage>
   );
 }
