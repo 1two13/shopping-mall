@@ -4,6 +4,7 @@ import styled from "styled-components";
 import OrderInfoBox from "../../checkout/components/OrderInfoBox";
 import OrdererInfoBox from "../../checkout/components/OrdererInfoBox";
 import DeliveryDesInfoBox from "../../checkout/components/DeliveryDesInfoBox";
+import FinalAmount from "../../checkout/components/FinalAmount";
 
 const StyledCheckoutPage = styled.div`
   margin: 20px 380px 15px 380px;
@@ -23,6 +24,7 @@ function CheckoutPage() {
       <OrderInfoBox />
       <OrdererInfoBox />
       <DeliveryDesInfoBox />
+      <FinalAmount />
     </StyledCheckoutPage>
   );
 }
