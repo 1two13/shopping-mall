@@ -2,8 +2,11 @@ import styled from "styled-components";
 
 const MenuBarBox = styled.div`
   display: flex;
+  /* justify-content: space-between; */
   justify-content: space-between;
-  margin: 20px 380px 15px 380px;
+  padding: 20px 380px 15px 380px;
+  /* margin: 20px 380px 15px 380px; */
+  border-bottom: 1px solid #ebeef2;
   a {
     font-weight: 700;
     font-size: 17px;
