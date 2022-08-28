@@ -30,14 +30,14 @@ const MainBoxInfo = styled.div`
 `;
 
 const CouponStatus = styled.div`
-  width: 40%;
+  min-width: 40%;
   text-align: center;
   color: #9e9e9e;
   font-size: 19px;
 `;
 
 const Price = styled.div`
-  width: 10%;
+  min-width: 14%;
   text-align: center;
   margin-right: 60px;
   font-weight: 600;

@@ -22,11 +22,11 @@ const SmallTitleBox = styled.div`
   justify-content: right;
   border-bottom: 1px solid #e1e1e1;
   div:nth-child(1) {
-    width: 32%;
+    min-width: 40%;
     text-align: center;
   }
   div:nth-child(2) {
-    width: 10%;
+    min-width: 15%;
     text-align: center;
     margin-right: 60px;
   }

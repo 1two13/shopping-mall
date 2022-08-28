@@ -65,7 +65,7 @@ const DesMemo = styled.div`
 `;
 
 const Select = styled.select`
-  width: 25%;
+  min-width: 230px;
   margin: 3px 5px;
   padding: 13px 0px 13px 18px;
   border: none;

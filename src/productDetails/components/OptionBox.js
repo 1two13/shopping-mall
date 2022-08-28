@@ -11,7 +11,7 @@ function OptionBox() {
   const [selectedOptions, setSelectedOptions] = useState([]);
   // console.log(selectedOptions);
   const [cntMap, setCntMap] = useState({});
-  console.log(cntMap);
+  // console.log(cntMap);
   const shouldReset = design !== null && color !== null;
 
   useEffect(() => {
