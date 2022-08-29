@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBasketShopping } from "@fortawesome/free-solid-svg-icons";
@@ -27,6 +28,7 @@ const MainIconNm = styled.span`
   margin-left: 7px;
   font-size: 30px;
   color: #f78fb3;
+  cursor: pointer;
 `;
 
 const SearchBox = styled.div`
@@ -68,18 +70,26 @@ const IconsBox = styled.div`
   }
 `;
 
-const CartIcon = styled.div``;
-
-const HeartIcon = styled.div``;
-
-const MyPageIcon = styled.div``;
+const MyPageIcon = styled.div`
+  cursor: pointer;
+`;
 
 function TopFixedBar() {
+  const navigate = useNavigate();
+
+  const moveToHomePage = () => {
+    navigate("/");
+  };
+
+  const moveToMyPage = () => {
+    navigate("/myPage");
+  };
+
   return (
     <TopBar>
       <MainIconBox>
         <FontAwesomeIcon icon={faBasketShopping} size="2x" color="#f78fb3" />
-        <MainIconNm>G O G O S H O P</MainIconNm>
+        <MainIconNm onClick={moveToHomePage}>G O G O S H O P</MainIconNm>
       </MainIconBox>
       <SearchBox>
         <SearchIcon>
@@ -88,14 +98,14 @@ function TopFixedBar() {
         <SearchBoxInput type="text" size="40" />
       </SearchBox>
       <IconsBox>
-        <CartIcon>
+        <div>
           <FontAwesomeIcon icon={faCartShopping} size="2x" />
-        </CartIcon>
-        <HeartIcon>
+        </div>
+        <div>
           <FontAwesomeIcon icon={faHeart} size="2x" />
-        </HeartIcon>
+        </div>
         <MyPageIcon>
-          <FontAwesomeIcon icon={faUser} size="2x" />
+          <FontAwesomeIcon icon={faUser} size="2x" onClick={moveToMyPage} />
         </MyPageIcon>
       </IconsBox>
     </TopBar>
