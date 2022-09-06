@@ -12,7 +12,7 @@ const AnimateBox = styled.div`
   }
 `;
 
-function BigAnimatePic() {
+function BigAnimatePic({ imageUrlArr }) {
   const settings = {
     dots: true,
     infinite: true,
@@ -25,12 +25,9 @@ function BigAnimatePic() {
   return (
     <AnimateBox>
       <Slider {...settings}>
-        <img src="https://image.brandi.me/home/banner/bannerImage_810475_1658387802.jpg" />
-        <img src="https://image.brandi.me/home/banner/bannerImage_810477_1658387802.jpg" />
-        <img src="https://image.brandi.me/home/banner/bannerImage_810478_1658387803.jpg" />
-        <img src="https://image.brandi.me/home/banner/bannerImage_810481_1658387803.jpg" />
-        <img src="https://image.brandi.me/home/banner/bannerImage_810480_1658387803.jpg" />
-        <img src="https://image.brandi.me/home/banner/bannerImage_810718_1658451694.jpg" />
+        {imageUrlArr.map((url) => (
+          <img key={url.event_id} src={url.image_url} />
+        ))}
       </Slider>
     </AnimateBox>
   );
