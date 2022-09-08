@@ -9,17 +9,12 @@ const ProductsBox = styled.div`
   margin: 42px 380px 80px 380px;
 `;
 
-function ProductsListBox() {
+function ProductsListBox({ productList }) {
   return (
     <ProductsBox>
-      <ProductBox />
-      <ProductBox />
-      <ProductBox />
-      <ProductBox />
-      <ProductBox />
-      <ProductBox />
-      <ProductBox />
-      <ProductBox />
+      {productList.map((product, index) => (
+        <ProductBox key={index} product={product} />
+      ))}
     </ProductsBox>
   );
 }

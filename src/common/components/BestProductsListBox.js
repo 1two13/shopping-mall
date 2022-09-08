@@ -22,41 +22,15 @@ const Idx = styled.div`
   line-height: 40px;
 `;
 
-function BestProductsListBox() {
+function BestProductsListBox({ productList }) {
   return (
     <ProductsBox>
-      <Box>
-        <Idx>1</Idx>
-        <ProductBox />
-      </Box>
-      <Box>
-        <Idx>2</Idx>
-        <ProductBox />
-      </Box>
-      <Box>
-        <Idx>3</Idx>
-        <ProductBox />
-      </Box>
-      <Box>
-        <Idx>4</Idx>
-        <ProductBox />
-      </Box>
-      <Box>
-        <Idx>5</Idx>
-        <ProductBox />
-      </Box>
-      <Box>
-        <Idx>6</Idx>
-        <ProductBox />
-      </Box>
-      <Box>
-        <Idx>7</Idx>
-        <ProductBox />
-      </Box>
-      <Box>
-        <Idx>8</Idx>
-        <ProductBox />
-      </Box>
+      {productList.map((product, index) => (
+        <Box key={index}>
+          <Idx>{index + 1}</Idx>
+          <ProductBox product={product} />
+        </Box>
+      ))}
     </ProductsBox>
   );
 }

@@ -1,6 +1,7 @@
 import React from "react";
-import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+
+import styled from "styled-components";
 
 const Div = styled.div`
   margin-bottom: 30px;
@@ -14,6 +15,7 @@ const Img = styled.img`
 
 const Name = styled.div`
   margin-top: 7px;
+  width: 96%;
   cursor: pointer;
 `;
 
@@ -31,26 +33,31 @@ const Sale = styled.div`
 
 const Price = styled.div``;
 
-function ProductBox() {
+function ProductBox({ product }) {
   const navigate = useNavigate();
 
   const moveToProductDetailsPage = () => {
     navigate("/product");
   };
 
-  let name = "full bloom 디자인 [아크릴톡]";
-
   return (
     <Div>
-      <Img
-        onClick={moveToProductDetailsPage}
-        src="https://image.brandi.me/cproduct/2022/03/07/SB000000000054841182_1646620295_image1_M.jpeg"
-      />
-      <Name>{name.length < 30 ? name : name.slice(0, 27) + " ..."}</Name>
-      <DetailsBox>
-        <Sale>10%</Sale>
-        <Price>13,000원</Price>
-      </DetailsBox>
+      {product !== undefined ? (
+        <div>
+          <Img onClick={moveToProductDetailsPage} src={product.image_url} />
+          <Name>
+            {product.name.length > 22
+              ? product.name.slice(0, 21) + " ..."
+              : product.name}
+          </Name>
+          <DetailsBox>
+            <Sale>{product.discount_rate}%</Sale>
+            <Price>{product.discount_price.toLocaleString()}원</Price>
+          </DetailsBox>
+        </div>
+      ) : (
+        ""
+      )}
     </Div>
   );
 }

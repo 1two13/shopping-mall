@@ -11,20 +11,22 @@ const Title = styled.h2`
   }
 `;
 
-function HomeProductsList() {
-  let name =
-    "~2XL[기장선택!!/3Color]뒷밴딩 안단추 클립 찰랑 핀턱 와이드 슬랙스팬츠_복플레이스";
-
+function HomeProductsList({ layoutListArr }) {
   return (
     <div>
-      <Title>오늘은 이 상품 어때요?</Title>
-      <ProductsListBox />
-
-      <Title>TODAY 베스트</Title>
-      <BestProductsListBox />
-
-      <Title>신상 모아보기</Title>
-      <ProductsListBox />
+      {layoutListArr.map((layoutList, index) =>
+        index !== 1 ? (
+          <div key={index}>
+            <Title>{layoutList.title}</Title>
+            <ProductsListBox productList={layoutList.product_list} />
+          </div>
+        ) : (
+          <div key={index}>
+            <Title>{layoutList.title}</Title>
+            <BestProductsListBox productList={layoutList.product_list} />
+          </div>
+        )
+      )}
     </div>
   );
 }

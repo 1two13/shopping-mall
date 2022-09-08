@@ -34,7 +34,7 @@ function HomePages() {
       ) : (
         <div>
           <BigAnimatePic imageUrlArr={data.result.banner_list} />
-          <HomeProductsList />
+          <HomeProductsList layoutListArr={data.result.layout_list} />
         </div>
       )}
     </div>
