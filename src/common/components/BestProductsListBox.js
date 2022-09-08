@@ -9,6 +9,7 @@ const ProductsBox = styled.div`
 
 const Box = styled.div`
   margin-bottom: 30px;
+  overflow: hidden;
 `;
 
 const Idx = styled.div`

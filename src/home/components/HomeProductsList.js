@@ -15,7 +15,7 @@ function HomeProductsList({ layoutListArr }) {
   return (
     <div>
       {layoutListArr.map((layoutList, index) =>
-        index !== 1 ? (
+        !layoutList.ranking_layout ? (
           <div key={index}>
             <Title>{layoutList.title}</Title>
             <ProductsListBox productList={layoutList.product_list} />

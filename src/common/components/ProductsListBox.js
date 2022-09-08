@@ -12,8 +12,8 @@ const ProductsBox = styled.div`
 function ProductsListBox({ productList }) {
   return (
     <ProductsBox>
-      {productList.map((product, index) => (
-        <ProductBox key={index} product={product} />
+      {productList.map((product) => (
+        <ProductBox key={product.product_id} product={product} />
       ))}
     </ProductsBox>
   );

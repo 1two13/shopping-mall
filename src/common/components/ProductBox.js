@@ -5,6 +5,9 @@ import styled from "styled-components";
 
 const Div = styled.div`
   margin-bottom: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 const Img = styled.img`
@@ -14,8 +17,10 @@ const Img = styled.img`
 `;
 
 const Name = styled.div`
-  margin-top: 7px;
+  padding-top: 7px;
   width: 96%;
+  overflow: hidden;
+  text-overflow: ellipsis;
   cursor: pointer;
 `;
 
@@ -28,7 +33,7 @@ const DetailsBox = styled.div`
 
 const Sale = styled.div`
   color: #ff204b;
-  margin-right: 7px;
+  padding-right: 7px;
 `;
 
 const Price = styled.div``;
@@ -45,13 +50,13 @@ function ProductBox({ product }) {
       {product !== undefined ? (
         <div>
           <Img onClick={moveToProductDetailsPage} src={product.image_url} />
-          <Name>
-            {product.name.length > 22
-              ? product.name.slice(0, 21) + " ..."
-              : product.name}
-          </Name>
+          <Name>{product.name}</Name>
           <DetailsBox>
-            <Sale>{product.discount_rate}%</Sale>
+            <Sale
+              style={product.discount_rate === 0 ? { paddingRight: 0 } : null}
+            >
+              {product.discount_rate !== 0 ? product.discount_rate + "%" : ""}
+            </Sale>
             <Price>{product.discount_price.toLocaleString()}원</Price>
           </DetailsBox>
         </div>
