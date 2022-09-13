@@ -27,12 +27,17 @@ const Div = styled.div`
   }
 `;
 
-const Img = styled.img`
-  width: 100%;
-  margin-top: 200px;
+const Description = styled.div`
+  margin: 230px 40px 0px 40px;
+  font-size: 20px;
 `;
 
-function BigDetailsPage() {
+const Img = styled.img`
+  width: 100%;
+  margin: 200px 0px;
+`;
+
+function BigDetailsPage({ imageUrl, description }) {
   const [selected, setSelected] = useState(1);
 
   return (
@@ -63,7 +68,10 @@ function BigDetailsPage() {
           주문정보
         </Div>
       </MenuBar>
-      <Img src="https://image.brandi.me/cproduct/2022/03/07/SB000000000054841182_1646620295_image1_M.jpeg" />
+      <Description>{description}</Description>
+      {imageUrl.map((url, index) => (
+        <Img key={index} src={url} />
+      ))}
     </div>
   );
 }

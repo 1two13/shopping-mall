@@ -1,16 +1,18 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
+import { AuthContext } from "../../common/components/AuthManager";
+
 const StyledButtonBox = styled.div`
   display: flex;
   justify-content: space-between;
   min-height: 60px;
-  margin-top: 30px;
+  margin: 30px 1px 0px 1px;
 `;
 
 const BuyBtn = styled.button`
@@ -39,21 +41,20 @@ const CartNHeartBtn = styled.button`
   }
 `;
 
-function ButtonBox({ design, color, selectedOptions }) {
+function ButtonBox({ selectedData, option, selectedOptions }) {
   const navigate = useNavigate();
   const [colored, setColored] = useState(false);
+  const { token, loginUrl } = useContext(AuthContext);
 
   const moveToCheckoutPage = () => {
     if (selectedOptions.length > 0) {
-      navigate("/checkout");
-    } else if (
-      design === null &&
-      color === null &&
-      selectedOptions.length < 1
-    ) {
-      alert("[디자인]를 선택하세요.");
-    } else if (color === null) {
-      alert("[바디색상]를 선택하세요.");
+      if (token !== null) navigate("/checkout");
+      else {
+        alert("로그인을 해주세요.");
+        window.location.href = loginUrl;
+      }
+    } else {
+      alert(option[selectedData.length].option_title);
     }
   };
 

@@ -1,8 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
 import BigDetailsPage from "../../productDetails/components/BigDetailsPage";
 import OptionBox from "../../productDetails/components/OptionBox";
+
+import productDetailsPageApi from "../../api/productDetailsPageApi";
 
 const StyledProductDetailsPage = styled.div`
   margin: 20px 380px 15px 380px;
@@ -37,11 +40,26 @@ const PriceBox = styled.div`
   margin-top: 25px;
   font-size: 30px;
   font-weight: 700;
-  div:nth-child(2) {
-    padding: 7px 0px 0px 2px;
-    font-size: 20px;
-    font-weight: 400;
-  }
+`;
+
+const DiscountRate = styled.div`
+  color: #ff204b;
+  margin-right: 7px;
+`;
+
+const Won = styled.div`
+  padding: 7px 0px 0px 2px;
+  font-size: 20px;
+  font-weight: 400;
+  margin-right: 7px;
+`;
+
+const OriginalPrice = styled.div`
+  padding: 7px 0px 0px 2px;
+  color: #808793;
+  font-weight: 400;
+  font-size: 20px;
+  text-decoration: line-through;
 `;
 
 const DeliveryBox = styled.div`
@@ -71,37 +89,74 @@ const FreeShip = styled.div`
   color: #808893;
 `;
 
+const Loading = styled.div`
+  position: fixed;
+  display: grid;
+  place-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+`;
+
 function ProductDetailsPage() {
-  let price = 13000;
-  // price에 천 단위로 콤마 붙이기
-  let cPrice = price.toLocaleString();
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState();
+  const params = useParams();
+
+  useEffect(() => {
+    productDetailsPageApi(params).then((data) => {
+      setData(data);
+      setLoading(false);
+    });
+  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  let product = data?.result.product;
+  let discountPrice =
+    product?.price - (product?.discount_rate / 100) * product?.price;
+
   return (
     <StyledProductDetailsPage>
-      <ImgNDetailsBox>
-        <Img src="https://image.brandi.me/cproduct/2022/03/07/SB000000000054841182_1646620295_image1_M.jpeg" />
-        <DetailsBox>
-          <Title>full bloom 디자인 [아크릴톡]</Title>
+      {loading ? (
+        <Loading>Loading...</Loading>
+      ) : (
+        <div>
+          <ImgNDetailsBox>
+            <Img src={product.image_url_list[0]} />
+            <DetailsBox>
+              <Title>{product.name}</Title>
 
-          <PriceBox>
-            <div>{cPrice}</div>
-            <div>원</div>
-          </PriceBox>
+              <PriceBox>
+                <DiscountRate>{product.discount_rate}%</DiscountRate>
+                <div>{discountPrice.toLocaleString()}</div>
+                <Won>원</Won>
+                <OriginalPrice>
+                  {product.price.toLocaleString()}원
+                </OriginalPrice>
+              </PriceBox>
 
-          <DeliveryBox>
-            <div>배송정보</div>
-            <div>일반배송</div>
-            <FreeShip>무료배송</FreeShip>
-          </DeliveryBox>
+              <DeliveryBox>
+                <div>배송정보</div>
+                <div>일반배송</div>
+                <FreeShip>무료배송</FreeShip>
+              </DeliveryBox>
 
-          <OptionBox />
-        </DetailsBox>
-      </ImgNDetailsBox>
-      <BigDetailsPage />
+              <OptionBox
+                option={data.result.option_list}
+                price={discountPrice}
+              />
+            </DetailsBox>
+          </ImgNDetailsBox>
+          <BigDetailsPage
+            imageUrl={product.image_url_list}
+            description={product.description}
+          />
+        </div>
+      )}
     </StyledProductDetailsPage>
   );
 }

@@ -42,7 +42,7 @@ function ProductBox({ product }) {
   const navigate = useNavigate();
 
   const moveToProductDetailsPage = () => {
-    navigate("/product");
+    navigate(`/product/${product.product_id}`);
   };
 
   return (

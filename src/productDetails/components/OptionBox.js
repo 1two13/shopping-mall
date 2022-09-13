@@ -1,29 +1,26 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import CustomSelect from "../../common/components/CustomSelect";
 import DetailSelectedBox from "../../common/components/DetailSelectedBox";
 import TotalPriceBox from "./TotalPriceBox";
 import ButtonBox from "./ButtonBox";
 
-function OptionBox() {
-  const [design, setDesign] = useState(null);
-  const [color, setColor] = useState(null);
-  const [selectedOptions, setSelectedOptions] = useState([]);
+function OptionBox({ option, price }) {
+  const [selectedData, setSelectedData] = useState([]); // 현재 선택된 옵션 개수
+  const [selectedOptions, setSelectedOptions] = useState([]); // 완성된 아이템 이름
   // console.log(selectedOptions);
   const [cntMap, setCntMap] = useState({});
   // console.log(cntMap);
-  const shouldReset = design !== null && color !== null;
+  const lengthCheck = selectedData.length === option.length;
 
   useEffect(() => {
-    // 모든 state 값이 변경되었을 때
-    if (shouldReset) {
-      // setDesign 함수와 setColor 함수 null로 초기화
-      setDesign(null);
-      setColor(null);
+    // 모든 옵션 값이 선택되었을 때
+    if (lengthCheck) {
+      // setSelectedData 함수 초기화
+      setSelectedData([]);
     }
-  }, [design, color]);
+  }, [selectedData]);
 
-  let price = 13000;
   let totalCnt = 0;
   // 선택된 총 개수를 구하는 for문
   for (let key in cntMap) {
@@ -43,24 +40,23 @@ function OptionBox() {
 
   return (
     <div>
-      <CustomSelect
-        label={"[디자인]를 선택하세요."}
-        optionData={["스카이레몬", "네이비그린"]}
-        onClick={(designText) => {
-          // console.log(designText);
-          setDesign(designText);
-        }}
-        shouldReset={shouldReset}
-      />
-
-      {design !== null ? (
+      {option.map((el, i) => (
         <CustomSelect
-          label={"[바디색상]를 선택하세요."}
-          optionData={["화이트바디"]}
-          onClick={(colorText) => {
-            setColor(colorText);
-            let itemName = `${design}/${colorText}`;
-            if (!selectedOptions.includes(itemName)) {
+          key={i}
+          label={el.option_title}
+          optionData={el.detail_option_list}
+          disabled={selectedData.length < i}
+          shouldReset={lengthCheck}
+          onClick={(text) => {
+            let currentOption = [...selectedData, text];
+            setSelectedData(currentOption);
+            // console.log(currentOption);
+
+            if (currentOption.length === option.length) {
+              let itemName = "";
+              currentOption.forEach((v) => (itemName += v + "/"));
+              itemName = itemName.slice(0, itemName.length - 1);
+
               setSelectedOptions([...selectedOptions, itemName]);
               setCntMap((oldCntMap) => ({
                 ...oldCntMap,
@@ -68,15 +64,8 @@ function OptionBox() {
               }));
             }
           }}
-          shouldReset={shouldReset}
         />
-      ) : (
-        <CustomSelect
-          disabled={true}
-          label={"[바디색상]를 선택하세요."}
-          optionData={["화이트바디"]}
-        />
-      )}
+      ))}
 
       {selectedOptions.map((itemName, index) => {
         return (
@@ -106,12 +95,10 @@ function OptionBox() {
           />
         );
       })}
-
       <TotalPriceBox totalPrice={totalPrice} />
-
       <ButtonBox
-        design={design}
-        color={color}
+        option={option}
+        selectedData={selectedData}
         selectedOptions={selectedOptions}
       />
     </div>
