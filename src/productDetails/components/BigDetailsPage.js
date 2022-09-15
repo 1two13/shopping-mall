@@ -27,17 +27,12 @@ const Div = styled.div`
   }
 `;
 
-const Description = styled.div`
-  margin: 230px 40px 0px 40px;
-  font-size: 20px;
-`;
-
 const Img = styled.img`
   width: 100%;
   margin: 200px 0px;
 `;
 
-function BigDetailsPage({ imageUrl, description }) {
+function BigDetailsPage({ imageUrl }) {
   const [selected, setSelected] = useState(1);
 
   return (
@@ -68,7 +63,6 @@ function BigDetailsPage({ imageUrl, description }) {
           주문정보
         </Div>
       </MenuBar>
-      <Description>{description}</Description>
       {imageUrl.map((url, index) => (
         <Img key={index} src={url} />
       ))}

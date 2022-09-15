@@ -23,9 +23,10 @@ const TopBar = styled.div`
   @media screen and (max-width: 1556px) {
     flex-direction: column;
     background-color: white;
-    margin-top: 32px;
+    padding-top: 32px;
     align-items: flex-start;
     position: relative;
+    position: sticky;
   }
 `;
 
@@ -42,12 +43,13 @@ const MainIconNm = styled.span`
 
 const Hamburger = styled.div`
   cursor: pointer;
+
   @media screen and (min-width: 1556px) {
     display: none;
   }
   @media screen and (max-width: 1556px) {
     position: absolute;
-    top: 0px;
+    top: 37px;
     right: 0px;
     background-color: white;
   }

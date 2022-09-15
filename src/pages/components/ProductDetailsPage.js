@@ -151,10 +151,7 @@ function ProductDetailsPage() {
               />
             </DetailsBox>
           </ImgNDetailsBox>
-          <BigDetailsPage
-            imageUrl={product.image_url_list}
-            description={product.description}
-          />
+          <BigDetailsPage imageUrl={product.image_url_list} />
         </div>
       )}
     </StyledProductDetailsPage>
