@@ -37,7 +37,7 @@ const Input = styled.input`
     width: 77%;
   }
   &.phoneNum {
-    width: 5%;
+    width: 7%;
     text-align: center;
   }
   &.email {
@@ -73,41 +73,86 @@ function OrdererInfoBox() {
     setThirdInput(e.slice(0, 4));
   };
 
+  const [info, setInfo] = useState({
+    name: "",
+    phoneNmStart: "",
+    phoneNmMid: "",
+    phoneNmEnd: "",
+    emailStart: "",
+    emailEnd: "",
+  });
+
+  const onChangeHandler = (e) => {
+    setInfo({
+      ...info,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  localStorage.setItem("ordererInfo", JSON.stringify(info));
+
   return (
     <div>
       <Title>주문자 정보</Title>
       <OrdererBox>
         <SubTitle>이름</SubTitle>
-        <Input type="text" className="name" />
+        <Input
+          type="text"
+          className="name"
+          name="name"
+          onChange={onChangeHandler}
+        />
       </OrdererBox>
       <OrdererBox>
         <SubTitle>휴대폰</SubTitle>
         <Input
           type="number"
-          onChange={(e) => firstInputOnChangeHandler(e.target.value)}
+          onChange={(e) => {
+            firstInputOnChangeHandler(e.target.value);
+            onChangeHandler(e);
+          }}
           value={firstInput}
           className="phoneNum"
+          name="phoneNmStart"
         />
         -
         <Input
           type="number"
-          onChange={(e) => secondInputOnChangeHandler(e.target.value)}
+          onChange={(e) => {
+            secondInputOnChangeHandler(e.target.value);
+            onChangeHandler(e);
+          }}
           value={secondInput}
           className="phoneNum"
+          name="phoneNmMid"
         />
         -
         <Input
           type="number"
-          onChange={(e) => thirdInputOnChangeHandler(e.target.value)}
+          onChange={(e) => {
+            thirdInputOnChangeHandler(e.target.value);
+            onChangeHandler(e);
+          }}
           value={thirdInput}
           className="phoneNum"
+          name="phoneNmEnd"
         />
       </OrdererBox>
       <OrdererBox className="emailBox">
         <SubTitle>이메일</SubTitle>
-        <Input type="email" className="email" />
+        <Input
+          type="email"
+          className="email"
+          name="emailStart"
+          onChange={onChangeHandler}
+        />
         @
-        <Input type="email" className="email" />
+        <Input
+          type="email"
+          className="email"
+          name="emailEnd"
+          onChange={onChangeHandler}
+        />
       </OrdererBox>
     </div>
   );

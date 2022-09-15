@@ -119,6 +119,9 @@ function ProductDetailsPage() {
   let discountPrice =
     product?.price - (product?.discount_rate / 100) * product?.price;
 
+  localStorage.setItem("imageUrl", product?.image_url_list[0]);
+  localStorage.setItem("productName", product?.name);
+
   return (
     <StyledProductDetailsPage>
       {loading ? (

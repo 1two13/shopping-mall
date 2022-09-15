@@ -4,8 +4,7 @@ import { AuthContext } from "./AuthManager";
 
 function Callback() {
   const [searchParams] = useSearchParams();
-  const token = searchParams.get("token");
-  // console.log(token);
+  const token = searchParams.get("token")?.replaceAll(" ", "+");
 
   const { setToken } = useContext(AuthContext);
 

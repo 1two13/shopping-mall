@@ -7,12 +7,13 @@ const MenuBarBox = styled.div`
   padding-top: 20px;
   padding-bottom: 15px;
   border-bottom: 1px solid #ebeef2;
+  /* border: 1px solid red; */
   a {
     font-weight: 700;
     font-size: 17px;
   }
   @media screen and (max-width: 1556px) {
-    padding-top: 0px;
+    padding-top: 2px;
   }
 `;
 

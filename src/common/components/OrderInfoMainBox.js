@@ -46,9 +46,9 @@ const Price = styled.div`
 function OrderInfoMainBox({ optionData, eachCnt, eachPrice }) {
   return (
     <MainBox>
-      <Img src="https://image.brandi.me/cproduct/2022/03/07/SB000000000054841182_1646620295_image1_M.jpeg" />
+      <Img src={localStorage.getItem("imageUrl")} />
       <MainBoxInfo>
-        <div>full bloom 디자인 [아크릴톡]</div>
+        <div>{localStorage.getItem("productName")}</div>
         <div>{optionData}</div>
         <div>{eachCnt}개</div>
       </MainBoxInfo>

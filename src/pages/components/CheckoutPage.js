@@ -33,7 +33,48 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
+let ordererInfo = JSON.parse(localStorage.getItem("ordererInfo"));
+
 function CheckoutPage() {
+  const onClickHandler = () => {
+    fetch(
+      "http://ec2-54-180-89-108.ap-northeast-2.compute.amazonaws.com/orders",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          token: localStorage.getItem("token"),
+        },
+        body: JSON.stringify({
+          user_info: {
+            name: ordererInfo?.name,
+            phone_number:
+              ordererInfo.phoneNmStart +
+              "-" +
+              ordererInfo.phoneNmMid +
+              "-" +
+              ordererInfo.phoneNmEnd,
+            email: ordererInfo.emailStart + "@" + ordererInfo.emailEnd,
+          },
+          destination_info: {
+            name: "뚱땅마을관리자",
+            phone_number: "010-1234-5678",
+            postal_code: "08288",
+            destination_address: "서울시",
+            destination_detail_address: "아파트",
+            memo: "문앞에 놔주세요.",
+          },
+          product_list: [
+            {
+              product_id: 1,
+              cnt: 1,
+            },
+          ],
+        }),
+      }
+    ).then((res) => res.json());
+  };
+
   return (
     <StyledCheckoutPage>
       <H1>주문하기</H1>
@@ -43,7 +84,7 @@ function CheckoutPage() {
       <FinalAmount />
       <PaymentMethod />
       <Div>
-        <Button>결제하기</Button>
+        <Button onClick={onClickHandler}>결제하기</Button>
       </Div>
     </StyledCheckoutPage>
   );
