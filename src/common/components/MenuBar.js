@@ -11,6 +11,9 @@ const MenuBarBox = styled.div`
     font-weight: 700;
     font-size: 17px;
   }
+  @media screen and (max-width: 1556px) {
+    padding-top: 0px;
+  }
 `;
 
 function MenuBar() {
