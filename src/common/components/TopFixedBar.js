@@ -29,7 +29,9 @@ const TopBar = styled.div`
   }
 `;
 
-const MainIconBox = styled.a``;
+const MainIconBox = styled.a`
+  min-width: 35%;
+`;
 
 const MainIconNm = styled.span`
   margin-left: 7px;
@@ -73,6 +75,8 @@ const SearchBoxInput = styled.input`
 
 const IconsBox = styled.div`
   display: flex;
+  justify-content: flex-end;
+  min-width: 25%;
   div {
     padding: 10px 0px 10px 30px;
   }
