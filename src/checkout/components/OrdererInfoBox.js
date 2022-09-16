@@ -37,7 +37,7 @@ const Input = styled.input`
     width: 77%;
   }
   &.phoneNum {
-    width: 7%;
+    width: 10%;
     text-align: center;
   }
   &.email {
@@ -54,6 +54,14 @@ function OrdererInfoBox() {
   const [firstInput, setFirstInput] = useState("");
   const [secondInput, setSecondInput] = useState("");
   const [thirdInput, setThirdInput] = useState("");
+  const [info, setInfo] = useState({
+    name: "",
+    phoneNmStart: "",
+    phoneNmMid: "",
+    phoneNmEnd: "",
+    emailStart: "",
+    emailEnd: "",
+  });
 
   const firstInputOnChangeHandler = (e) => {
     // 한글 입력 제한
@@ -73,19 +81,12 @@ function OrdererInfoBox() {
     setThirdInput(e.slice(0, 4));
   };
 
-  const [info, setInfo] = useState({
-    name: "",
-    phoneNmStart: "",
-    phoneNmMid: "",
-    phoneNmEnd: "",
-    emailStart: "",
-    emailEnd: "",
-  });
+  const onChangeHandler = (e, maxLength) => {
+    let value = e.target.value;
 
-  const onChangeHandler = (e) => {
     setInfo({
       ...info,
-      [e.target.name]: e.target.value,
+      [e.target.name]: value.slice(0, maxLength),
     });
   };
 
@@ -109,7 +110,7 @@ function OrdererInfoBox() {
           type="number"
           onChange={(e) => {
             firstInputOnChangeHandler(e.target.value);
-            onChangeHandler(e);
+            onChangeHandler(e, 3);
           }}
           value={firstInput}
           className="phoneNum"
@@ -120,7 +121,7 @@ function OrdererInfoBox() {
           type="number"
           onChange={(e) => {
             secondInputOnChangeHandler(e.target.value);
-            onChangeHandler(e);
+            onChangeHandler(e, 4);
           }}
           value={secondInput}
           className="phoneNum"
@@ -131,7 +132,7 @@ function OrdererInfoBox() {
           type="number"
           onChange={(e) => {
             thirdInputOnChangeHandler(e.target.value);
-            onChangeHandler(e);
+            onChangeHandler(e, 4);
           }}
           value={thirdInput}
           className="phoneNum"

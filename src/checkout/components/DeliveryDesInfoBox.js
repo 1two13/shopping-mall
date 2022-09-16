@@ -42,7 +42,7 @@ const Input = styled.input`
     width: 77%;
   }
   &.phoneNum {
-    width: 5%;
+    width: 10%;
     text-align: center;
   }
   &.des {
@@ -84,6 +84,16 @@ function DeliveryDesInfoBox() {
   const [firstInput, setFirstInput] = useState("");
   const [secondInput, setSecondInput] = useState("");
   const [thirdInput, setThirdInput] = useState("");
+  const [info, setInfo] = useState({
+    name: "",
+    phoneNmStart: "",
+    phoneNmMid: "",
+    phoneNmEnd: "",
+    postalCode: "",
+    destinationAddress: "",
+    destinationDetailAddress: "",
+    memo: "",
+  });
 
   const firstInputOnChangeHandler = (e) => {
     // 한글 입력 제한
@@ -103,43 +113,89 @@ function DeliveryDesInfoBox() {
     setThirdInput(e.slice(0, 4));
   };
 
+  const onChangeHandler = (e, maxLength) => {
+    let value = e.target.value;
+
+    setInfo({
+      ...info,
+      [e.target.name]: value.slice(0, maxLength),
+    });
+  };
+
+  localStorage.setItem("deliveryDesInfo", JSON.stringify(info));
+
   return (
     <div>
       <Title>배송지 정보</Title>
       <DeliveryDesBox>
         <SubTitle>수령인</SubTitle>
-        <Input type="text" className="name" />
+        <Input
+          type="text"
+          className="name"
+          name="name"
+          onChange={onChangeHandler}
+        />
       </DeliveryDesBox>
       <DeliveryDesBox>
         <SubTitle>휴대폰</SubTitle>
         <Input
           type="number"
-          onChange={(e) => firstInputOnChangeHandler(e.target.value)}
+          onChange={(e) => {
+            firstInputOnChangeHandler(e.target.value);
+            onChangeHandler(e, 3);
+          }}
           value={firstInput}
           className="phoneNum"
+          name="phoneNmStart"
         />
         -
         <Input
           type="number"
-          onChange={(e) => secondInputOnChangeHandler(e.target.value)}
+          onChange={(e) => {
+            secondInputOnChangeHandler(e.target.value);
+            onChangeHandler(e, 4);
+          }}
           value={secondInput}
           className="phoneNum"
+          name="phoneNmMid"
         />
         -
         <Input
           type="number"
-          onChange={(e) => thirdInputOnChangeHandler(e.target.value)}
+          onChange={(e) => {
+            thirdInputOnChangeHandler(e.target.value);
+            onChangeHandler(e, 4);
+          }}
           value={thirdInput}
           className="phoneNum"
+          name="phoneNmEnd"
         />
       </DeliveryDesBox>
       <DeliveryDesBox>
         <SubTitle>배송주소</SubTitle>
         <DesInput>
-          <Input type="text" className="des" />
+          <Input
+            type="text"
+            className="des"
+            placeholder="우편번호"
+            name="postalCode"
+            onChange={onChangeHandler}
+          />
           <SecondInputBox>
-            <Input type="text" className="des" />
-            <Input type="text" className="des" />
+            <Input
+              type="text"
+              className="des"
+              placeholder="주소"
+              name="destinationAddress"
+              onChange={onChangeHandler}
+            />
+            <Input
+              type="text"
+              className="des"
+              placeholder="상세주소"
+              name="destinationDetailAddress"
+              onChange={onChangeHandler}
+            />
           </SecondInputBox>
           <DesMemo>
             * 제주도, 도서 산간 지역 등은 배송이 하루 이상 추가 소요될 수
@@ -149,7 +205,7 @@ function DeliveryDesInfoBox() {
       </DeliveryDesBox>
       <DeliveryDesBox className="memo">
         <SubTitle>배송메모</SubTitle>
-        <Select>
+        <Select name="memo" onChange={onChangeHandler}>
           <option>배송 시 요청사항을 선택해주세요</option>
           <option>문 앞에 놓아주세요.</option>
           <option>경비(관리)실에 맡겨 주세요.</option>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import OrderInfoBox from "../../checkout/components/OrderInfoBox";
@@ -33,10 +33,17 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-let ordererInfo = JSON.parse(localStorage.getItem("ordererInfo"));
-
 function CheckoutPage() {
+  const [cnt, setCnt] = useState(1);
+
+  useEffect(() => {
+    setCnt((cnt) => cnt + 1);
+  }, []);
+
   const onClickHandler = () => {
+    let ordererInfo = JSON.parse(localStorage.getItem("ordererInfo"));
+    let deliveryDesInfo = JSON.parse(localStorage.getItem("deliveryDesInfo"));
+
     fetch(
       "http://ec2-54-180-89-108.ap-northeast-2.compute.amazonaws.com/orders",
       {
@@ -49,25 +56,31 @@ function CheckoutPage() {
           user_info: {
             name: ordererInfo?.name,
             phone_number:
-              ordererInfo.phoneNmStart +
+              ordererInfo?.phoneNmStart +
               "-" +
-              ordererInfo.phoneNmMid +
+              ordererInfo?.phoneNmMid +
               "-" +
-              ordererInfo.phoneNmEnd,
-            email: ordererInfo.emailStart + "@" + ordererInfo.emailEnd,
+              ordererInfo?.phoneNmEnd,
+            email: ordererInfo?.emailStart + "@" + ordererInfo?.emailEnd,
           },
           destination_info: {
-            name: "뚱땅마을관리자",
-            phone_number: "010-1234-5678",
-            postal_code: "08288",
-            destination_address: "서울시",
-            destination_detail_address: "아파트",
-            memo: "문앞에 놔주세요.",
+            name: deliveryDesInfo?.name,
+            phone_number:
+              deliveryDesInfo?.phoneNmStart +
+              "-" +
+              deliveryDesInfo?.phoneNmMid +
+              "-" +
+              deliveryDesInfo?.phoneNmEnd,
+            postal_code: deliveryDesInfo?.postalCode,
+            destination_address: deliveryDesInfo?.destinationAddress,
+            destination_detail_address:
+              deliveryDesInfo?.destinationDetailAddress,
+            memo: deliveryDesInfo?.memo,
           },
           product_list: [
             {
-              product_id: 1,
-              cnt: 1,
+              product_id: cnt,
+              cnt: cnt,
             },
           ],
         }),
