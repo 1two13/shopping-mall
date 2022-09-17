@@ -42,7 +42,7 @@ function PaymentMethod() {
           onClick={() => setClicked(1)}
           className={clicked === 1 ? "black" : ""}
         >
-          {/* <img src="https://www.brandi.co.kr/static/22.07.01/images/icon_pay_naver.svg" /> */}
+          네이버페이
         </Button>
         <Button
           onClick={() => setClicked(2)}
