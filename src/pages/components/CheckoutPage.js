@@ -6,6 +6,7 @@ import OrdererInfoBox from "../../checkout/components/OrdererInfoBox";
 import DeliveryDesInfoBox from "../../checkout/components/DeliveryDesInfoBox";
 import FinalAmount from "../../checkout/components/FinalAmount";
 import PaymentMethod from "../../checkout/components/PaymentMethod";
+import { useNavigate } from "react-router-dom";
 
 const StyledCheckoutPage = styled.div`
   margin: 20px 380px 15px 380px;
@@ -35,6 +36,7 @@ const Button = styled.button`
 
 function CheckoutPage() {
   const [cnt, setCnt] = useState(1);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setCnt((cnt) => cnt + 1);
@@ -86,6 +88,8 @@ function CheckoutPage() {
         }),
       }
     ).then((res) => res.json());
+
+    navigate("/myPage");
   };
 
   return (

@@ -76,10 +76,18 @@ const PurchaseStatus = styled.div`
 `;
 
 function MyPageHistory() {
+  let optionData = JSON.parse(localStorage.getItem("optionData"))[0];
+
+  let today = new Date();
+  let year = today.getFullYear();
+  let month = ("0" + (today.getMonth() + 1)).slice(-2);
+  let day = ("0" + today.getDate()).slice(-2);
+  let date = `${year}.${month}.${day}`;
+
   return (
     <div>
       <Title>
-        <span>2022.07.11 </span>|<span> 20220711011960001</span>
+        <span>{date}</span>
       </Title>
       <DeliveryType>일반배송</DeliveryType>
       <SmallTitleBox>
@@ -88,13 +96,13 @@ function MyPageHistory() {
       </SmallTitleBox>
 
       <MainBox>
-        <Img src="https://image.brandi.me/cproduct/2021/09/09/SB000000000023069117_1631181231_image1_S.jpeg" />
+        <Img src={localStorage.getItem("imageUrl")} />
         <MainBoxInfo>
-          <div>(Pro Hard) 투명 올리 초록이 바나나 에어팟프로 에어팟케이스</div>
-          <div>단일상품</div>
-          <div>2개</div>
+          <div>{localStorage.getItem("productName")}</div>
+          <div>{optionData[0]}</div>
+          <div>{optionData[1]}개</div>
         </MainBoxInfo>
-        <Price>21,600원</Price>
+        <Price>{optionData[2].toLocaleString()}원</Price>
         <PurchaseStatus>구매확정</PurchaseStatus>
       </MainBox>
     </div>
